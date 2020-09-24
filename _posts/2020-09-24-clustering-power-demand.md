@@ -150,7 +150,7 @@ Initial data analysis tasks
       labs(title='Transformer type distribution',x='Transformer type')+
       theme(legend.position='none')
 
-<img src="/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
     # Proportion table 
     pander(prop.table(table(Char$TRANSFORMER_TYPE)))
