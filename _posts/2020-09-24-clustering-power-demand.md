@@ -210,7 +210,7 @@ Initial data analysis tasks
 
 ![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
-1.  Using this and other analyses you think appropriate, describe the
+2.  Using this and other analyses, describe the
     relationships between the different substation characteristics
     (transformer type, number of customers, rating, percentage of I&C
     customers and number of feeders).
@@ -299,7 +299,7 @@ Initial clustering tasks
 Using the scaled daily measurements from the Autumn dataset perform
 hierarchical clustering for the daily average demand:
 
-1.  Using your preferred choice of a dissimilarity function, create a
+3.  Using your preferred choice of a dissimilarity function, create a
     distance matrix for these data and produce a dendrogram.
 
 <!-- -->
@@ -350,7 +350,7 @@ according to its cluster membership.
     5  511035     2
     6  511079     2
 
-1.  For each of your clusters, plot the daily average demand for 1) All
+5.  For each of your clusters, plot the daily average demand for 1) All
     days, 2) Weekdays, 3) Saturdays and 4) Sundays.
 
 <!-- -->
@@ -435,7 +435,7 @@ according to its cluster membership.
 
 ![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-14-1.png)
 
-1.  Produce summaries of the variables in Characteristics.csv for each
+6.  Produce summaries of the variables in Characteristics.csv for each
     of your clusters.
 
 <!-- -->
@@ -572,7 +572,7 @@ according to its cluster membership.
      4.5    :0          Max.   :1.0000   Max.   :1.0000                     
      (Other):0                                                              
 
-1.  Describe your clusters based on the information in
+7.  Describe your clusters based on the information in
     Characteristics.csv and choose names for them. Describe the patterns
     of their power demands for each cluster.
 
@@ -622,7 +622,7 @@ street lighting.
 Allocating new substations
 ==========================
 
-1.  For each substation, on the same plot, plot the daily average demand
+8.  For each substation, on the same plot, plot the daily average demand
     for 1) All days, 2) Weekdays, 3) Saturdays and 4) Sundays (one plot
     per new substation).
 
@@ -708,7 +708,7 @@ Allocating new substations
 
 ![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-17-1.png)
 
-1.  Using k-means (or other version, i.e. based on medians), allocate
+9.  Using k-means (or other version, i.e. based on medians), allocate
     these new substations to one of your clusters.
 
 <!-- -->
@@ -779,7 +779,7 @@ Allocating new substations
 </tbody>
 </table>
 
-1.  Based on your summaries and plots, is the cluster allocation as you
+10.  Based on your summaries and plots, is the cluster allocation as you
     expected?
 
 Cluster allocation is as expected, substations that have been clustered
