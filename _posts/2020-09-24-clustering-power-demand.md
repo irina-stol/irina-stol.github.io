@@ -312,6 +312,8 @@ hierarchical clustering for the daily average demand:
 4. Choose an appropriate number of clusters and label each substation
 according to its cluster membership.
 
+<!-- -->
+
     # Cut dendogram for 7 clusters 
     clusters <- cutree(cluster,7)
 
