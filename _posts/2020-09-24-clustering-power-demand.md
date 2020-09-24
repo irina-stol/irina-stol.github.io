@@ -30,7 +30,7 @@ Initial data analysis tasks
     # Summary table
     pander(summary(Char))
 
-<table style="width:97%;">
+<table style="width:70%;">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 27%" />
