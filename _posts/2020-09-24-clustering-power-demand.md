@@ -14,21 +14,21 @@ Data
 
 There are two types of data: (i) variable - the measurements from the monitors; and (ii) fixed - characteristics of the substations, that include information that may be useful when trying to understand, and name, the clusters. There are 5 datasets containing the variable data, each relating to a different season
 
-• Summer_2012.RData
-• HighSummer_2012.RData 
-• Autumn_2012.RData
-• Winter_2012.RData
-• Spring_2013.RData
+- Summer_2012.RData
+- HighSummer_2012.RData 
+- Autumn_2012.RData
+- Winter_2012.RData
+- Spring_2013.RData
 
 The fixed data is in the Characteristics.csv file. This data set contains the following information:
 
-• SUBSTATION_NUMBER - so you can link with the measured data
-• TRANSFORMER_TYPE - ground or pole mounted (indicating urban or rural areas)
-• TOTAL_CUSTOMERS - the number of customers receiving their electricity from this substation
-• Transformer_RATING - indicating the size of the total power being delivered by the substation
-• Percentage_IC - the percentage of industrial and commerical (not domestic) customers
-• LV_FEEDER_COUNT - the number of feeders coming from the substation
-• GRID_REFERENCE - the Ordnance Survey grid reference for the location
+- SUBSTATION_NUMBER - so you can link with the measured data
+- TRANSFORMER_TYPE - ground or pole mounted (indicating urban or rural areas)
+- TOTAL_CUSTOMERS - the number of customers receiving their electricity from this substation
+- Transformer_RATING - indicating the size of the total power being delivered by the substation
+- Percentage_IC - the percentage of industrial and commerical (not domestic) customers
+- LV_FEEDER_COUNT - the number of feeders coming from the substation
+- GRID_REFERENCE - the Ordnance Survey grid reference for the location
 
 Initial data analysis tasks
 ---------------------------
