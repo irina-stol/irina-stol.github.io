@@ -6,9 +6,29 @@ categories: rblogging
 tags: ggplot2 R clustering 
 ---
 
+This post will anayse electricity power demand across South Wales. The aim is to perform clustering on power data recordings at substations in order to see whether there are groups that have similar demand profiles and to see whether there are differences between seasons. This work was done as part of the 'Applications of Data Science and Statisitcal Modelling' module during my degree. 
 
-Clustering power data
-=====================
+
+Data
+----
+
+There are two types of data: (i) variable - the measurements from the monitors; and (ii) fixed - characteristics of the substations, that include information that may be useful when trying to understand, and name, the clusters. There are 5 datasets containing the variable data, each relating to a different season
+
+• Summer_2012.RData
+• HighSummer_2012.RData 
+• Autumn_2012.RData
+• Winter_2012.RData
+• Spring_2013.RData
+
+The fixed data is in the Characteristics.csv file. This data set contains the following information:
+
+• SUBSTATION_NUMBER - so you can link with the measured data
+• TRANSFORMER_TYPE - ground or pole mounted (indicating urban or rural areas)
+• TOTAL_CUSTOMERS - the number of customers receiving their electricity from this substation
+• Transformer_RATING - indicating the size of the total power being delivered by the substation
+• Percentage_IC - the percentage of industrial and commerical (not domestic) customers
+• LV_FEEDER_COUNT - the number of feeders coming from the substation
+• GRID_REFERENCE - the Ordnance Survey grid reference for the location
 
 Initial data analysis tasks
 ---------------------------
@@ -30,7 +50,7 @@ Initial data analysis tasks
     # Summary table
     pander(summary(Char))
 
-<table style="width:60%;">
+<table style="width:50%;">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 27%" />
@@ -313,6 +333,7 @@ hierarchical clustering for the daily average demand:
 according to its cluster membership.
 
 <!-- -->
+
 
     # Cut dendogram for 7 clusters 
     clusters <- cutree(cluster,7)
@@ -794,7 +815,6 @@ from including more clusters. Figure 1 shows a plot of
 ‘intra-cluster-variation’ for 20 clusters. Here it is identified to use
 seven clusters for the initial analysis.
 
-    Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa
 
 ![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-19-1.png)
 
