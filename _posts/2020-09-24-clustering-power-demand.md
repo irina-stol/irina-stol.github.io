@@ -1,6 +1,6 @@
 ---
-layout: Clustering power demand 
-title: "This is a test post for my R blog"
+layout: post
+title: "Clustering power demand"
 date: 2020-09-24
 categories: rblogging
 tags: ggplot2 R clustering 
