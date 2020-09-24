@@ -180,7 +180,7 @@ Initial data analysis tasks
       labs(title='Transformer rating by transformer type',x='Transformer rating')+
       theme(legend.position='bottom')
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-4-1.png)
 
     # Plot for Percentage of industrial and commercial customers 
     ggplot(Char, aes(x=Percentage_IC, fill=TRANSFORMER_TYPE))+
@@ -188,7 +188,7 @@ Initial data analysis tasks
       labs(title='Percentage of idustrial and commercial customers by transformer type')+
       theme(legend.position='bottom')
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
 1.  Using this and other analyses you think appropriate, describe the
     relationships between the different substation characteristics
@@ -203,7 +203,7 @@ Initial data analysis tasks
            x='Total customers')+
       theme(legend.position='bottom')
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
     ggplot(Char, aes(x=TOTAL_CUSTOMERS, fill=Transformer_RATING))+
       geom_histogram(bins=30)+
@@ -211,7 +211,7 @@ Initial data analysis tasks
            x='Total customers')+
       theme(legend.position='bottom')
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
     ggplot(Char, aes(x=as.factor(LV_FEEDER_COUNT), fill=TRANSFORMER_TYPE))+
       geom_bar(stat='count')+
@@ -219,14 +219,14 @@ Initial data analysis tasks
            x='LV Feeder Count')+
       theme(legend.position='bottom')
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
     ggplot(Char, aes(x=as.factor(LV_FEEDER_COUNT), fill=Transformer_RATING))+
       geom_bar(stat='count')+
       labs(title='LV Feeder counts by transformer rating',x='LV Feeder Count')+
       theme(legend.position='bottom')
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
 **Transformer Type**
 
@@ -308,7 +308,7 @@ hierarchical clustering for the daily average demand:
     # Plot the dendogram 
     plot(cluster,hang=-1)
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-11-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-11-1.png)
 4. Choose an appropriate number of clusters and label each substation
 according to its cluster membership.
 
@@ -410,7 +410,7 @@ according to its cluster membership.
            x='Minute interval', y='Power')+
       facet_wrap(~Class)
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-14-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-14-1.png)
 
 1.  Produce summaries of the variables in Characteristics.csv for each
     of your clusters.
@@ -430,7 +430,7 @@ according to its cluster membership.
       labs(title='Transformer type by cluster membership',
            x='Transformer type')
 
-<img src="/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
+<img src="/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
     for(i in sort(unique(df2$Class))){
     df2 %>% filter(Class==i) %>% summary() %>% print() 
@@ -683,7 +683,7 @@ Allocating new substations
             legend.position='bottom')+
       facet_wrap(~Substation)
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-17-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-17-1.png)
 
 1.  Using k-means (or other version, i.e. based on medians), allocate
     these new substations to one of your clusters.
@@ -794,7 +794,7 @@ seven clusters for the initial analysis.
 
     Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-19-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-19-1.png)
 
 Performing k-means clustering with seven clusters on the Autumn dataset,
 and then assigning these clusters to substations IDs, it is then
@@ -803,9 +803,9 @@ four seasons. Figure 2 shows the seven clusters and the scaled power
 demand for the five seasons. Figure 3 shows these clusters against the
 real power demand in KW.
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-21-1.png)
+![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-21-1.png)
 
-![](/clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-23-1.png)
+![](//img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-23-1.png)
 
 Looking at the plots the clusters can be described in the following way:
 
