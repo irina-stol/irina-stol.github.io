@@ -74,8 +74,8 @@ The above environmental variables were identified through a metadata analysis10 
 _Table 2. Comparison between modelled and observed bio -toxin concentrations for 2016 for St Austell Bay according to statistical measures. All values are presented as μg okadaic acid eq. kg−1 shellfish flesh. RMSE: root mean square error, GLM: generalized linear model; GAM: generalized additive model; \*: best performing model [9]_
 
 
-| **mean** | **SD** | **RMSE** | **Bias** |
-| --- | --- | --- | --- | --- |
+|| **mean** | **SD** | **RMSE** | **Bias** |
+| --- | --- | --- | --- | --- | --- |
 | **Observations** | 514.7 | 633.5 | NA | NA |
 | **GLM\*** | 227.6 | 159.5 | 596.1 | -287.1 |
 | **Averaged GLM** | 404.1 | 409.7 | 582.3 | -110.6 |
