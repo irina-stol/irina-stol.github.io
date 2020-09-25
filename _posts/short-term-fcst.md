@@ -81,6 +81,11 @@ _Table 2. Comparison between modelled and observed bio -toxin concentrations for
 | **Averaged GLM** | 404.1 | 409.7 | 582.3 | -110.6 |
 | **GAM** | 443.7 | 507.2 | 671.6 | -71.01 |
 
+
+| **mean** | **SD** | **RMSE** | **Bias** | 
+| --- | --- | --- | --- | 
+| **Observations** | 514.7 | 633.5 | NA | NA |
+
 From table 2 it is evident that although GLM and averaged GLM have lower RMSE measures, the GAM however has the smallest bias. These results were obtained by training the models on 54 observation and evaluating 24 observations. Although this project will build on the above modelling approaches, the number of evaluation observations will be 5 as opposed to 24 where one on the five observations is on average 2 weeks apart. This is done so that the forecast predictions are only a few weeks (1-10) into the future and not into a whole year in advance.
 
 **DESCRIPTION OF DATA, ANALYSES, AND RESULTS**
