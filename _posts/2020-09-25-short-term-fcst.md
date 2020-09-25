@@ -10,6 +10,8 @@ South West England serves as a rich base for multiple harvesting sites of shellf
 
 KEY WORDS: Time Series Modelling · Short-Term Forecasting · Shellfish · Harmful Algae Blooms (HABs) · Okadaic acid · General Additive Model (GAM)
 
+Supporting R code for this report can be found [here](https://github.com/irina-stol/projects/blob/master/short-term-fcst.R)
+
 **INTRODUCTION**
 
 **Background**
@@ -338,7 +340,7 @@ In conclusion the modeling approach has shown to produce feasible results that c
 
 8. Chaffin J, Linking Models and Field Experiments to Forecast Algal Bloom Toxicity in Lake Erie - NCCOS Coastal Science Website [Internet]. NCCOS Coastal Science Website. 2020 [Accessed 1 August 2020]. Available from: [https://coastalscience.noaa.gov/project/linking-models-field-experiments-forecast-algal-bloom-toxicity-lake-erie/](https://coastalscience.noaa.gov/project/linking-models-field-experiments-forecast-algal-bloom-toxicity-lake-erie/)
 
-9. 1. Janssen A, Janse J, Beusen A, Chang M, Harrison J, Huttunen I et al. _How to model algal blooms in any lake on earth_. Current Opinion in Environmental Sustainability. 2019;36:1-10.
+9. Janssen A, Janse J, Beusen A, Chang M, Harrison J, Huttunen I et al. _How to model algal blooms in any lake on earth_. Current Opinion in Environmental Sustainability. 2019;36:1-10.
 
 10. Schmidt W, Evers-King H, Campos C, Jones D, Miller P, Davidson K et al. _A generic approach for the development of short-term predictions of Escherichia coli and biotoxins in shellfish._ Aquaculture Environment Interactions. 2018;10:173-185.
 
