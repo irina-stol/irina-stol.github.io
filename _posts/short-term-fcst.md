@@ -121,8 +121,8 @@ St Austell Bay is located on the south coast of Cornwall UK, covering an approxi
 
 Initial data plots in figure 3 suggest that some variables have higher predictive power, such as the sea surface temperature and windspeed. And this can be confirmed when fitting a GAM of the following form:
 
- 〖OA〗_i  ~ Gamma(μ_i,φ)
-log⁡(μ_i )= f_1 (〖rain〗_i ) 〖+f〗_2 (〖river〗_i )+⋯+f_8 (〖lagriver〗_i )
+ OA_{i}  ~ Gamma(/mu_{i},\phi)
+log⁡(/mu_{i} )= f_{1} (rain_{i} ) +f_{2} (river_{i} )+⋯+f_{8} (lagriver_{i} )
 
 
 Where _f_ is the smoothing function fitted to each variable. Due to the non-Gaussian nature of the response variable OA the GAM models are fitted with a log link function and a Gamma distribution. Initially all the environmental variables were set as smooth terms with knots equal to 4. The results of the model summary in table 5 and 6 below are in line with the results of Schmidt W&#39;s paper.
