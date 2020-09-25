@@ -121,19 +121,18 @@ St Austell Bay is located on the south coast of Cornwall UK, covering an approxi
 
 Initial data plots in figure 3 suggest that some variables have higher predictive power, such as the sea surface temperature and windspeed. And this can be confirmed when fitting a GAM of the following form:
 
- OA_{i}  ~ Gamma(/mu_{i},\phi)
-log⁡(/mu_{i} )= f_{1} (rain_{i} ) +f_{2} (river_{i} )+⋯+f_{8} (lagriver_{i} )
+![](equation.jpg)
 
 
 Where _f_ is the smoothing function fitted to each variable. Due to the non-Gaussian nature of the response variable OA the GAM models are fitted with a log link function and a Gamma distribution. Initially all the environmental variables were set as smooth terms with knots equal to 4. The results of the model summary in table 5 and 6 below are in line with the results of Schmidt W&#39;s paper.
 
-_Table_ _5__. p-values from the initial GAM model fitted to all environmental variables. An asterisk (\*) marks variables that contributed significantly (p \&lt; 0.05) to the model_
+_Table 5. p-values from the initial GAM model fitted to all environmental variables. An asterisk (\*) marks variables that contributed significantly (p \&lt; 0.05) to the model_
 
 | **VARIABLE** | **P-VALUE** |
 | --- | --- |
 | **rain.** | 0.09 |
 | **river.** | 0.08 |
-| **sea surface temperature (sst)\*\*\*** | \&gt;2e-16 |
+| **sea surface temperature (sst)\*\*\*** | >2e-16 |
 | **wind direction.** | 0.018 |
 | **wind speed\*** | 0.057 |
 | **solar radiation (ssrd)** | 0.83 |
@@ -142,10 +141,9 @@ _Table_ _5__. p-values from the initial GAM model fitted to all environmental va
 
 Table 5 suggest that the most important variables for modelling OA toxicity are sea surface temperature, lagged rain, windspeed and wind direction.
 
-_Table 6. Significant Environmental variables from initial GAM model when including all parameters and Schmidt W&#39;s paper GAM model.__An asterisk (\*) marks variables that contributed significantly (p \&lt; 0.05) to the model._
+_Table 6. Significant Environmental variables from initial GAM model when including all parameters and Schmidt W's paper GAM model.An asterisk (\*) marks variables that contributed significantly (p \&lt; 0.05) to the model._
 
-|
- | **Explanatory variables** |
+|| **Explanatory variables** |
 | --- | --- |
 | **GAM0** | SST\*\*\*, wind speed\*, lag rain\* |
 | **Schmidt W&#39;s GAM**** 10 **|** SST **\*, solar radiation** \*, wind speed **\* and as smoothedterm:** lag rainfall** |
@@ -389,4 +387,3 @@ In conclusion the modeling approach has shown to produce feasible results that c
 
 1. Brown A, Lilley M, Shutler J, Lowe C, Artioli Y, Torres R et al. _Assessing risks and mitigating impacts of harmful algal blooms on mariculture and marine fisheries_. Reviews in Aquaculture. 2019;.
 
-15
