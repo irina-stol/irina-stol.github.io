@@ -8,6 +8,8 @@ tags: ggplot2 R clustering
 
 This post will anayse electricity power demand across South Wales. The aim is to perform clustering on power data recordings at substations in order to see whether there are groups that have similar demand profiles and to see whether there are differences between seasons. This work was done as part of the 'Applications of Data Science and Statisitcal Modelling' module during my degree. 
 
+Supporting R Markdown code for this post can be found [here](https://github.com/irina-stol/electricity-clustering-/blob/master/clustering-power-demand.Rmd).
+
 
 Data
 ----
@@ -435,144 +437,8 @@ according to its cluster membership.
 
 ![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-14-1.png)
 
-6.  Produce summaries of the variables in Characteristics.csv for each
-    of your clusters.
 
-<!-- -->
-
-    # Select cluster membership for each station
-    df1 <- res %>% select(Station,Class)
-    # Rename column 1 in dataset 'Char'
-    colnames(Char)[1] <- "Station"
-    # merge cluster membership to 'Char' dataset by Station ID
-    df2 <- merge(result,Char,by='Station')
-
-    # Plot of transformet type by cluster membership
-    ggplot(df2, aes(x=TRANSFORMER_TYPE, fill=Class))+
-      geom_bar(stat='count')+
-      labs(title='Transformer type by cluster membership',
-           x='Transformer type')
-
-<img src="/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
-
-    for(i in sort(unique(df2$Class))){
-    df2 %>% filter(Class==i) %>% summary() %>% print() 
-    }
-
-        Station       Class                    TRANSFORMER_TYPE TOTAL_CUSTOMERS 
-     Min.   :511029   1:148   Grd Mtd Dist. Substation :117     Min.   :  0.00  
-     1st Qu.:513475   2:  0   Pole Mtd Dist. Substation: 31     1st Qu.: 58.75  
-     Median :532661   3:  0                                     Median :111.00  
-     Mean   :534999   4:  0                                     Mean   :116.51  
-     3rd Qu.:552278   5:  0                                     3rd Qu.:159.25  
-     Max.   :563737   6:  0                                     Max.   :301.00  
-                      7:  0                                                     
-     Transformer_RATING Percentage_IC     LV_FEEDER_COUNT GRID_REFERENCE    
-     500    :32         Min.   :0.00000   Min.   :0.000   Length:148        
-     300    :29         1st Qu.:0.00000   1st Qu.:2.000   Class :character  
-     315    :28         Median :0.03889   Median :3.000   Mode  :character  
-     100    :16         Mean   :0.12196   Mean   :2.986                     
-     200    :12         3rd Qu.:0.14073   3rd Qu.:4.000                     
-     800    :11         Max.   :1.00000   Max.   :6.000                     
-     (Other):20                                                             
-        Station       Class                    TRANSFORMER_TYPE TOTAL_CUSTOMERS
-     Min.   :511030   1:  0   Grd Mtd Dist. Substation :209     Min.   :  0.0  
-     1st Qu.:513178   2:211   Pole Mtd Dist. Substation:  2     1st Qu.: 40.5  
-     Median :532699   3:  0                                     Median :158.0  
-     Mean   :533887   4:  0                                     Mean   :156.6  
-     3rd Qu.:552824   5:  0                                     3rd Qu.:237.5  
-     Max.   :564285   6:  0                                     Max.   :485.0  
-                      7:  0                                                    
-     Transformer_RATING Percentage_IC     LV_FEEDER_COUNT GRID_REFERENCE    
-     500    :85         Min.   :0.00000   Min.   : 0.00   Length:211        
-     300    :46         1st Qu.:0.08735   1st Qu.: 3.00   Class :character  
-     800    :26         Median :0.28333   Median : 4.00   Mode  :character  
-     315    :21         Mean   :0.42762   Mean   : 3.55                     
-     1000   :21         3rd Qu.:0.84033   3rd Qu.: 5.00                     
-     200    : 5         Max.   :1.00000   Max.   :10.00                     
-     (Other): 7                                                             
-        Station       Class                   TRANSFORMER_TYPE TOTAL_CUSTOMERS
-     Min.   :511150   1: 0   Grd Mtd Dist. Substation :24      Min.   : 0.00  
-     1st Qu.:512811   2: 0   Pole Mtd Dist. Substation: 4      1st Qu.: 2.75  
-     Median :532664   3:28                                     Median :15.50  
-     Mean   :533616   4: 0                                     Mean   :21.39  
-     3rd Qu.:552015   5: 0                                     3rd Qu.:26.50  
-     Max.   :564224   6: 0                                     Max.   :94.00  
-                      7: 0                                                    
-     Transformer_RATING Percentage_IC    LV_FEEDER_COUNT GRID_REFERENCE    
-     500    :12         Min.   :0.0000   Min.   :0.000   Length:28         
-     800    : 4         1st Qu.:0.9192   1st Qu.:1.000   Class :character  
-     200    : 3         Median :0.9968   Median :2.000   Mode  :character  
-     1000   : 3         Mean   :0.8944   Mean   :2.607                     
-     300    : 2         3rd Qu.:1.0000   3rd Qu.:3.250                     
-     315    : 2         Max.   :1.0000   Max.   :8.000                     
-     (Other): 2                                                            
-        Station       Class                  TRANSFORMER_TYPE TOTAL_CUSTOMERS 
-     Min.   :511191   1:0   Grd Mtd Dist. Substation :6       Min.   : 0.000  
-     1st Qu.:513673   2:0   Pole Mtd Dist. Substation:3       1st Qu.: 0.000  
-     Median :532645   3:0                                     Median : 3.000  
-     Mean   :531323   4:9                                     Mean   : 4.556  
-     3rd Qu.:552052   5:0                                     3rd Qu.: 8.000  
-     Max.   :552946   6:0                                     Max.   :15.000  
-                      7:0                                                     
-     Transformer_RATING Percentage_IC    LV_FEEDER_COUNT GRID_REFERENCE    
-     1000   :3          Min.   :0.9566   Min.   :1.000   Length:9          
-     100    :2          1st Qu.:1.0000   1st Qu.:1.000   Class :character  
-     315    :2          Median :1.0000   Median :1.000   Mode  :character  
-     300    :1          Mean   :0.9904   Mean   :2.222                     
-     500    :1          3rd Qu.:1.0000   3rd Qu.:4.000                     
-     0      :0          Max.   :1.0000   Max.   :5.000                     
-     (Other):0                                                             
-        Station       Class                  TRANSFORMER_TYPE TOTAL_CUSTOMERS
-     Min.   :512438   1:0   Grd Mtd Dist. Substation :3       Min.   : 0.00  
-     1st Qu.:512440   2:0   Pole Mtd Dist. Substation:1       1st Qu.: 0.00  
-     Median :513008   3:0                                     Median : 1.50  
-     Mean   :517806   4:0                                     Mean   :16.25  
-     3rd Qu.:518374   5:4                                     3rd Qu.:17.75  
-     Max.   :532770   6:0                                     Max.   :62.00  
-                      7:0                                                    
-     Transformer_RATING Percentage_IC     LV_FEEDER_COUNT GRID_REFERENCE    
-     1000   :2          Min.   :0.00000   Min.   :0.00    Length:4          
-     15     :1          1st Qu.:0.02551   1st Qu.:0.75    Class :character  
-     315    :1          Median :0.05390   Median :1.00    Mode  :character  
-     0      :0          Mean   :0.27695   Mean   :0.75                      
-     4      :0          3rd Qu.:0.30534   3rd Qu.:1.00                      
-     4.5    :0          Max.   :1.00000   Max.   :1.00                      
-     (Other):0                                                              
-        Station       Class                  TRANSFORMER_TYPE TOTAL_CUSTOMERS
-     Min.   :513050   1:0   Grd Mtd Dist. Substation :4       Min.   :0.0    
-     1st Qu.:513404   2:0   Pole Mtd Dist. Substation:1       1st Qu.:0.0    
-     Median :513582   3:0                                     Median :1.0    
-     Mean   :526709   4:0                                     Mean   :2.4    
-     3rd Qu.:531459   5:0                                     3rd Qu.:5.0    
-     Max.   :562052   6:5                                     Max.   :6.0    
-                      7:0                                                    
-     Transformer_RATING Percentage_IC    LV_FEEDER_COUNT GRID_REFERENCE    
-     500    :4          Min.   :0.8781   Min.   :0.0     Length:5          
-     50     :1          1st Qu.:1.0000   1st Qu.:0.0     Class :character  
-     0      :0          Median :1.0000   Median :1.0     Mode  :character  
-     4      :0          Mean   :0.9756   Mean   :0.8                       
-     4.5    :0          3rd Qu.:1.0000   3rd Qu.:1.0                       
-     5      :0          Max.   :1.0000   Max.   :2.0                       
-     (Other):0                                                             
-        Station       Class                  TRANSFORMER_TYPE TOTAL_CUSTOMERS
-     Min.   :531057   1:0   Grd Mtd Dist. Substation :0       Min.   :0.0    
-     1st Qu.:531645   2:0   Pole Mtd Dist. Substation:3       1st Qu.:0.5    
-     Median :532232   3:0                                     Median :1.0    
-     Mean   :531841   4:0                                     Mean   :1.0    
-     3rd Qu.:532234   5:0                                     3rd Qu.:1.5    
-     Max.   :532235   6:0                                     Max.   :2.0    
-                      7:3                                                    
-     Transformer_RATING Percentage_IC    LV_FEEDER_COUNT  GRID_REFERENCE    
-     25     :1          Min.   :0.0000   Min.   :0.0000   Length:3          
-     50     :1          1st Qu.:0.5000   1st Qu.:0.5000   Class :character  
-     100    :1          Median :1.0000   Median :1.0000   Mode  :character  
-     0      :0          Mean   :0.6667   Mean   :0.6667                     
-     4      :0          3rd Qu.:1.0000   3rd Qu.:1.0000                     
-     4.5    :0          Max.   :1.0000   Max.   :1.0000                     
-     (Other):0                                                              
-
-7.  Describe your clusters based on the information in
+6.  Describe your clusters based on the information in
     Characteristics.csv and choose names for them. Describe the patterns
     of their power demands for each cluster.
 
@@ -622,7 +488,7 @@ street lighting.
 Allocating new substations
 ==========================
 
-8.  For each substation, on the same plot, plot the daily average demand
+7.  For each substation, on the same plot, plot the daily average demand
     for 1) All days, 2) Weekdays, 3) Saturdays and 4) Sundays (one plot
     per new substation).
 
@@ -708,7 +574,7 @@ Allocating new substations
 
 ![](/img/2020-09-24-clustering-power-demand_files/figure-markdown_strict/unnamed-chunk-17-1.png)
 
-9.  Using k-means (or other version, i.e. based on medians), allocate
+8.  Using k-means (or other version, i.e. based on medians), allocate
     these new substations to one of your clusters.
 
 <!-- -->
@@ -779,7 +645,7 @@ Allocating new substations
 </tbody>
 </table>
 
-10.  Based on your summaries and plots, is the cluster allocation as you
+9.  Based on your summaries and plots, is the cluster allocation as you
     expected?
 
 Cluster allocation is as expected, substations that have been clustered
@@ -792,14 +658,10 @@ cluster, but on a smaller power scale.
 Exploring differences between seasons
 =====================================
 
-The aim of this report is to perform analysis on power data recordings
-at substations for the five-following season: Autumn, Winter, Spring,
-Summer, High Summer.
+The aims of this section are:
 
-The objectives of the report include
-
-• Identifying differences in power demand between seasons •
-Investigating cluster groupings of substations between seasons
+- Identifying differences in power demand between seasons
+- Investigating cluster groupings of substations between seasons
 
 First part of the analysis will be done by performing clustering by
 k-means, for the Autumn data set, then attaching the cluster membership
@@ -836,7 +698,7 @@ Load shape is constantly high throughout the day and night, and the
 seasonal variation is hardly noticeable, except in winter the demand is
 slightly higher.
 
-**Cluster 2 – Domestic ** Mostly serves domestic customers, where the
+**Cluster 2 – Domestic** Mostly serves domestic customers, where the
 load is low and flat during daytime, and peaks during evening hours. A
 noticeable increase in power demand in the winter season, and a slight
 peak in the autumn, mostly due to rising use of heating.
@@ -900,7 +762,7 @@ their cluster membership, hence Figure 2 with the seasonal plots can be
 used as a good estimate for seasonal power demand changes.
 
 <table>
-<caption>Clusters by Season</caption>
+<caption>Table 1. Clusters by Season</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Autumn</th>
@@ -1020,15 +882,8 @@ stations for all seasons, except high summer where a few stations
 (commercial) may be operating for longer hours, making their load shape
 similar to that of an industrial profile.
 
-    ## New names:
-    ## * n -> n...2
-    ## * n -> n...4
-    ## * n -> n...6
-    ## * n -> n...8
-    ## * n -> n...10
-
 <table>
-<caption>Station Count by Season</caption>
+<caption>Table 2. Station Count by Season</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">cluster</th>
@@ -1107,247 +962,5 @@ station, to the remaining seasons, produces seasonal demand patterns,
 that are on average accurate to rely on. And an increase in power demand
 during winter months is observed in all clusters.
 
-APPENDIX R CODE
-===============
 
-    library(tidyverse)
-    library(dplyr)
-    library(ggplot2)
-    library(chron)
-    library(knitr)
-    library(factoextra)
-    library(cluster)
-
-    # Load power demand data for all seasons 
-    Aut  <- get(load('Autumn_2012.RData'))
-    Wint <- get(load('Winter_2012.RData'))
-    Spri <- get(load('Spring_2013.RData'))
-    Summ <- get(load('Summer_2012.RData'))
-    HSumm <- get(load('HighSummer_2012.RData'))
-
-    # Change date format 
-    Aut$Date <- dates(Aut[,2], origin = c(month = 1,day = 1,year = 1970))
-    Wint$Date <- dates(Wint[,2], origin = c(month = 1,day = 1,year = 1970))
-    Spri$Date <- dates(Spri[,2], origin = c(month = 1,day = 1,year = 1970))
-    Summ$Date <- dates(Summ[,2], origin = c(month = 1,day = 1,year = 1970))
-    HSumm$Date <- dates(HSumm[,2], origin = c(month = 1,day = 1,year = 1970))
-
-    # Calculate means for every minute interval in Autumn dataset 
-    Aut1 <-  Aut[,1:146] %>% select(-c(Date)) %>% group_by(Station) %>% summarise_all(funs(mean))
-
-    # --- Assuming clusters are the same as in Autumn
-    set.seed(1234)
-
-    # Perform k=means clustering on scaled Autumn measurments with 7 clusters 
-    kmeans_Aut <- kmeans(Aut1[,-1], centers=7,nstart=25)
-    # Output plot of wws vs nnumber of clusters
-    fviz_nbclust(Aut1, kmeans, method = "wss", k.max=20)
-
-    #---- sacled plot 
-
-    # Merge cluster membership to station ID for every season 
-    Autumn <- merge(Aut,res,by='Station')
-    Winter <- merge(Wint,res,by='Station')
-    Spring <- merge(Spri,res,by='Station')
-    Summer <- merge(Summ,res,by='Station')
-    HSummer <- merge(HSumm,res,by='Station')
-
-    # Remove non_scaled measurements 
-    Autumn[,147:291] <- NULL 
-    # Create subset for the mean of minute intervals 
-    Aut_avg <-  Autumn %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    Aut_avg$minute <- as.numeric(Aut_avg$minute)
-
-    Winter[,147:291] <- NULL
-    Wint_avg <-  Winter %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    Wint_avg$minute <- as.numeric(Wint_avg$minute)
-
-    Spring[,147:291] <- NULL
-    Spri_avg <-  Spring %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    Spri_avg$minute <- as.numeric(Spri_avg$minute)
-
-    Summer[,147:291] <- NULL
-    Summ_avg <-  Summer %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    Summ_avg$minute <- as.numeric(Summ_avg$minute)
-
-    HSummer[,147:291] <- NULL
-    HSumm_avg <-  HSummer %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    HSumm_avg$minute <- as.numeric(HSumm_avg$minute)
-
-    # Produce plot of scaled minute interval measutments for every season facetted by cluster 
-    scaled <- ggplot(Aut_avg,aes(x=minute,y=avg))+
-      geom_line(mapping=aes(colour='autumn'))+
-      geom_line(Wint_avg,mapping=aes(colour='winter'))+
-      geom_line(Spri_avg,mapping=aes(colour='spring'))+
-      geom_line(Summ_avg,mapping=aes(colour='summer'))+
-      geom_line(HSumm_avg,mapping=aes(colour='high summer'))+
-      labs(title='Scaled demand by cluster for each season',
-           x='Time',
-           y='Power')+
-      scale_x_continuous(breaks=c(1,24,48,72,96,120,144),
-                         labels=c("00:00","04:00","08:00","12:00",
-                                  "16:00","20:00","23:50")) +
-      theme(legend.title = element_blank(),legend.position='bottom')+
-      facet_wrap(~Class)
-
-    scaled
-
-    # --- Non-scaled 
-
-    # Reassing all seasons with cluster memberships 
-    Autumn <- merge(Aut,res,by='Station')
-    Winter <- merge(Wint,res,by='Station')
-    Spring <- merge(Spri,res,by='Station')
-    Summer <- merge(Summ,res,by='Station')
-    HSummer <- merge(HSumm,res,by='Station')
-
-    # Remove scaled measurements 
-    Autumn[,3:147] <- NULL
-    # Create subset for the mean of minute intervals 
-    Aut_avg <-  Autumn %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    Aut_avg$minute <- as.numeric(Aut_avg$minute)
-
-
-    Winter[,3:147] <- NULL
-    Wint_avg <-  Winter %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    Wint_avg$minute <- as.numeric(Wint_avg$minute)
-
-    Spring[,3:147] <- NULL
-    Spri_avg <-  Spring %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    Spri_avg$minute <- as.numeric(Spri_avg$minute)
-
-    Summer[,3:147] <- NULL
-    Summ_avg <-  Summer %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    Summ_avg$minute <- as.numeric(Summ_avg$minute)
-
-    HSummer[,3:147] <- NULL
-    HSumm_avg <-  HSummer %>% gather(key='minute',value,-Date,-Class,-Station)%>%
-      group_by(minute,Class)%>%
-      summarise(avg=mean(value))
-    HSumm_avg$minute <- as.numeric(HSumm_avg$minute)
-
-    # Produce plot of non scaled minute interval measurements for all seasons facetted by cluster 
-    non_scaled <- ggplot(Aut_avg,aes(x=minute,y=avg))+
-                  geom_line(mapping=aes(colour='autumn'))+
-                  geom_line(Wint_avg,mapping=aes(colour='winter'))+
-                  geom_line(Spri_avg,mapping=aes(colour='spring'))+
-                  geom_line(Summ_avg,mapping=aes(colour='summer'))+
-                  geom_line(HSumm_avg,mapping=aes(colour='high summer'))+
-                  labs(title='Real demand by cluster for each season',
-                       x='Time',
-                       y='Power KW')+
-                  scale_x_continuous(breaks=c(1,24,48,72,96,120,144),
-                                     labels=c("00:00","04:00","08:00","12:00",
-                                              "16:00","20:00","23:50")) +
-                  theme(legend.title = element_blank(),legend.position='bottom')+
-                  facet_wrap(~Class)
-
-    non_scaled
-
-    # ----  Part two, if clusters change by season
-
-    # Bind the cluster memberships to the Autumn dataset
-    res <- cbind(Aut1, Class=factor(unname(kmeans_Aut$cluster))) 
-
-    # Create function to calculate distances of new data to the cluster centers
-    clusters <- function(x, centers) {
-      # compute squared euclidean distance from each sample to each cluster center
-      tmp <- sapply(seq_len(nrow(x)),
-                    function(i) apply(centers, 1,
-                                      function(v) sum((x[i, ]-v)^2)))
-      max.col(-t(tmp))  # find index of min distance
-    }
-
-
-    # Find the cluster centres for clusters in Autumn data
-    centers <- kmeans_Aut$centers
-
-    # Calculate means for each substation by minute interval for each season
-    Wint_s  <- Wint[1:146]
-    Wint_s  <- Wint_s %>% group_by(Station) %>% summarise_all('mean')
-    Spri_s  <- Spri[1:146]
-    Spri_s  <- Spri_s %>% group_by(Station) %>% summarise_all('mean')
-    Summ_s  <- Summ[1:146]
-    Summ_s  <- Summ_s %>% group_by(Station) %>% summarise_all('mean')
-    HSumm_s <- HSumm[1:146]
-    HSumm_s <- HSumm_s %>% group_by(Station) %>% summarise_all('mean')
-
-
-    ## Note, below code is computationally heavy, please allow some time
-
-    # Using 'clusters' function, compute clusters for new data in every season 
-    cl   <- clusters(Wint_s[,3:146], centers)
-    res1 <- cbind(Wint_s, Class=factor(unname(cl)))
-    c2   <- clusters(Spri_s[,3:146], centers)
-    res2 <- cbind(Spri_s, Class=factor(unname(c2)))
-    c3   <- clusters(Summ_s[,3:146], centers)
-    res3 <- cbind(Summ_s, Class=factor(unname(c3)))
-    c4   <- clusters(HSumm_s[,3:146], centers)
-    res4 <- cbind(HSumm_s, Class=factor(unname(c4)))
-
-    # Select Station and Class(cluster membership) for each season
-    Aut_stat   <- res %>% select(Station,Class)
-    Wint_stat  <- res1 %>% select(Station,Class)
-    Spri_stat  <- res2 %>% select(Station,Class)
-    Summ_stat  <- res3 %>% select(Station,Class)
-    HSumm_stat <- res4 %>% select(Station,Class)
-
-    # Rename 'Class' column to respective season name 
-    colnames(Aut_stat)[2] <- 'Autumn'
-    colnames(Wint_stat)[2] <- 'Winter'
-    colnames(Spri_stat)[2] <- 'Spring'
-    colnames(Summ_stat)[2] <- 'Summer'
-    colnames(HSumm_stat)[2] <- 'HSummer'
-
-    # Merge all seasons into one dataframe 
-    df <- merge(Aut_stat,Wint_stat, by='Station')
-    df <- merge(df,Spri_stat,by='Station')
-    df <- merge(df,Summ_stat,by='Station')
-    df <- merge(df,HSumm_stat,by='Station')
-
-    # Write to csv (to not perform above computationaly high operations)
-    write.csv(df,file='cluster memberships.csv')
-    # Read in the above data 
-    df <- read.csv('cluster memberships.csv')
-    # Remove first column
-    df$X <- NULL
-
-    # Create dataframe that compares cluster membership between seasons 
-    ddf <- df %>% group_by(Autumn,Winter,Spring,Summer,HSummer) %>% count()
-    kable(head(ddf[order(ddf$n, decreasing=TRUE),],12))
-
-    # Subset cluster counts for each season
-    cnt1 <- df %>% group_by(Autumn) %>% count() 
-    cnt2 <- df %>% group_by(Winter) %>% count() 
-    cnt3 <- df %>% group_by(Spring) %>% count() 
-    cnt4 <- df %>% group_by(Summer) %>% count() 
-    cnt5 <- df %>% group_by(HSummer) %>% count() 
-
-    # Combine above subsets
-    count <- cbind(cnt1,cnt2,cnt3,cnt4,cnt5)
-    # Select every other column(duplicates)
-    odd_ind <- seq(3,10,2)
-    # rRemove duplicate columns 
-    count[,odd_ind] <- NULL
-    # Rename columns 
-    colnames(count) <- c('cluster','Autumn','Winter','Spring','Summer','HSummer')
-    # Output table with station counts per cluster for every season 
-    kable(count)
+      
