@@ -76,7 +76,7 @@ _Table 2. Comparison between modelled and observed bio -toxin concentrations for
 
 | **mean** | **SD** | **RMSE** | **Bias** |
 | --- | --- | --- | --- | --- |
-| **Observations** | 514.7 | 633.5 | | |
+| **Observations** | 514.7 | 633.5 | NA | NA |
 | **GLM\*** | 227.6 | 159.5 | 596.1 | -287.1 |
 | **Averaged GLM** | 404.1 | 409.7 | 582.3 | -110.6 |
 | **GAM** | 443.7 | 507.2 | 671.6 | -71.01 |
