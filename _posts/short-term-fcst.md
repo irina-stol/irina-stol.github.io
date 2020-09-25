@@ -61,7 +61,7 @@ Another relevant study &quot;_How to model algal blooms in any lake on earth_&qu
 
 In addition to the above, this project will build upon existing work that is published in the paper named – &quot;_A generic approach for the development of short-term predictions of Escherichia coli and biotoxins in shellfish&quot;_ _10__._ This study presents methods for forecasting short-term changes in shellfish concentrations of Escherichia coli and biotoxin- okadaic acid (OA). However, for the purpose of this project only the findings for OA will be looked at from the mentioned paper. The forecasting models were developed by first exploring the environmental drivers for OA toxicity, of which significant variables are outlined in Table 1. As summarised in the table, the study concentrates on three modelling approaches, GLM, Averaged GLM, and GAM.
 
-_Table 1.__Explanatory variables identified for modelled biotoxin concentrations in St Austell Bay. An asterisk (\*) marks variable that contributed significantly (p \&lt; 0.05) to the model. GLM: generalized linear model; GAM: generalized additive model, SST: sea surface temperature. Source [10]_
+__Table 1.Explanatory variables identified for modelled biotoxin concentrations in St Austell Bay. An asterisk (\*) marks variable that contributed significantly (p \&lt; 0.05) to the model. GLM: generalized linear model; GAM: generalized additive model, SST: sea surface temperature. Source [10]_
 
 | **Model** | **Explanatory variables for biotoxin (OA)** |
 | --- | --- |
@@ -73,12 +73,12 @@ The above environmental variables were identified through a metadata analysis10 
 
 _Table 2. Comparison between modelled and observed bio -toxin concentrations for 2016 for St Austell Bay according to statistical measures. All values are presented as μg okadaic acid eq. kg−1 shellfish flesh. RMSE: root mean square error, GLM: generalized linear model; GAM: generalized additive model; \*: best performing model [9]_
 
-|
- | **mean** | **SD** | **RMSE** | **Bias** |
+
+| **mean** | **SD** | **RMSE** | **Bias** |
 | --- | --- | --- | --- | --- |
 | **Observations** | 514.7 | 633.5 |
- |
- |
+|
+|
 | **GLM\*** | 227.6 | 159.5 | 596.1 | -287.1 |
 | **Averaged GLM** | 404.1 | 409.7 | 582.3 | -110.6 |
 | **GAM** | 443.7 | 507.2 | 671.6 | -71.01 |
