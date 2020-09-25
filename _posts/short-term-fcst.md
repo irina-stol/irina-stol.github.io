@@ -10,7 +10,7 @@ KEY WORDS: Time Series Modelling · Short-Term Forecasting · Shellfish · Harmf
 
 **Background**
 
-Farming of finish, shellfish and seaweed has been growing substantially over the last four decades and is expected to grow further due to the decline of wild fish reserves. In the UK marine aquaculture has generated seafood sales worth over £600 million per year1. A major region for expansion of shellfish farms in UK is South West England, with its vast stretches of coastlines which are rich in planktonic algae that shellfish feed on. However, harvests from shellfish farms can be compromised due to naturally occurring marine phytoplankton that produce biotoxins, more commonly known as Harmful Algae Blooms (HABs).
+Farming of finish, shellfish and seaweed has been growing substantially over the last four decades and is expected to grow further due to the decline of wild fish reserves. In the UK marine aquaculture has generated seafood sales worth over £600 million per year [1]. A major region for expansion of shellfish farms in UK is South West England, with its vast stretches of coastlines which are rich in planktonic algae that shellfish feed on. However, harvests from shellfish farms can be compromised due to naturally occurring marine phytoplankton that produce biotoxins, more commonly known as Harmful Algae Blooms (HABs).
 
 &quot;_Marine biotoxins are poisonous substances which can accumulate in the tissues of live bivalve molluscs. This can be as a result of feeding on biotoxin producing phytoplankton_.&quot;2
 
@@ -18,15 +18,11 @@ This can lead to temporary closures of shellfish farms resulting in shortages of
 
 In South West England monitoring of phytoplankton is done by the &#39;Food Standards Agency&#39;2. Water samples are collected at numerous shellfish harvesting sites and analysed for various species of phytoplankton, of which one of them is called &#39;Dinophysis&#39;. This is one of the important phytoplankton which produces the biotoxin &#39;okadaic acid&#39; (OA). If the concentration of OA is greater than or equal to 100 cells/litre of Dinophysis then the site is at the alert level and necessary precautions must be taken if harvesting from these areas. The OA toxin threshold is 160 micrograms/litre (μg/L) to protect human consumers. This will be the biotoxin the project will concentrate on – Okadaic Acid.
 
-The shellfish that is present in waters with high levels of biotoxins stay unharmed (immune to biotoxins) and are perfectly safe to sell and consume once the concentration of biotoxins decreases again. However once harvested it may not be economically viable to return the live shellfish to the harvested waters4. Hence there is an opportunity for data driven decision making in regard to shellfish harvesting, about when to harvest, when not to, and when to sell existing harvested stock4.
-
 There have been previous efforts to study environmental conditions such as rainfall and windspeeds, that correlate to high levels of HAB toxicity, however short-term forecasting models for prediction of HAB toxicity in South West England region have not been widespread. Methods looking into HAB cell concentration and the seasonal components have yet to be extensively used for HAB forecasting. Here the project will identify key drivers for elevated OA toxicity levels and explore the use of HAB cell concentration and in addition investigate the time series of OA toxicity levels. With this information forecasting models were developed with two different approaches that can be used to deliver data driven decisions.
 
 **Aims of the project**
 
 The aim of the project will be to produce a robust short-term forecasting model predicting the toxicity of OA in shellfish harvesting sites across the South West of England for the span of 1-10 weeks ahead. These models can then be used with the intention of informing and supporting shellfish farms management decisions.
-
-This will require a thorough analysis and understanding of HAB toxicity data and the environmental causes that accompany high concentration levels. And will be done by identifying combinations of predictor variables that are linked with elevated OA concentration through feature selection, to then build and train models, verifying their performance through various comparison metrics. The project will first analyse the data and build models for St Austell Bay in Cornwall, to then develop a generic approach that can be used on multiple additional sites across South West England.
 
 Available data for this project includes:
 
@@ -39,9 +35,9 @@ These are obtained from approximately 20 South West aquaculture sites, collected
 
 **Environmental variables -** daily measurements of:
 
-- Sea surface temperature, wind speed and wind direction, waves etc. from the European Centre for Medium-term Weather Forecasting 5
+- Sea surface temperature, wind speed and wind direction, waves etc. from the European Centre for Medium-term Weather Forecasting [5]
 
-- Rainfall and river flow from UK Environment Agency 6
+- Rainfall and river flow from UK Environment Agency [6]
 
 - Nutrient concentrations and plankton community composition form European Regional Seas Ecosystem Model (ERSEM)7
 
