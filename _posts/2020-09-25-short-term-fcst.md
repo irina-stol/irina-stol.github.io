@@ -101,7 +101,7 @@ _Table 4. Summary statistics for HAB cell abundance (count) as 100 cells per lit
 
 Figure 2 shows the distribution of OA measures, where most values are below 500 mg/L and highlights the extreme high values.
 
-![](plot-2.jpg)
+![](/img/2020-09-25-short-term-fcst_files/plot-2.JPG)
 
 Since the measurements are not taken on a consistent basis, it will be important to account for that when fitting any timer series models (e.g ARIMA) as well as when looking at any lags between HAB count and OA toxicity.
 
@@ -109,7 +109,7 @@ First steps of the project were to examine the findings of Schmidt W.&#39;s pape
 
 **St Austell Bay**
 
-![](plot-3.jpg)
+![](/img/2020-09-25-short-term-fcst_files/plot-3.JPG)
 
 St Austell Bay is located on the south coast of Cornwall UK, covering an approximate area of 21 km3 and a mean depth of 5 m near the shore to 20 m at the mouth12. The bay includes 2 shellfish farms that harvest blue mussels. Main characteristics of the bay include small tidal current, the river &#39;Par&#39; with other small streams that may influence near shore dynamics and cliffs shielding winds from the east. Taking note of the location&#39;s characteristics, the data sets with the environmental variables can now be looked at in detail. The main environmental variables (for which detailed information can be found in the original paper10) that span up to the end of 2018 to be looked at are the following:
 
@@ -121,11 +121,11 @@ St Austell Bay is located on the south coast of Cornwall UK, covering an approxi
 - Solar radiation (ssrd) - d-1
 - Sea surface temperature (sst) - degrees Celsius
 
-![](plot-4.jpg)
+![](/img/2020-09-25-short-term-fcst_files/plot-4.JPG)
 
-Initial data plots in figure 3 suggest that some variables have higher predictive power, such as the sea surface temperature and windspeed. And this can be confirmed when fitting a GAM of the following form:
+Initial data plots in figure 4 suggest that some variables have higher predictive power, such as the sea surface temperature and windspeed. And this can be confirmed when fitting a GAM of the following form:
 
-![](equation.jpg)
+![](/img/2020-09-25-short-term-fcst_files/GAM-formula.JPG)
 
 
 Where _f_ is the smoothing function fitted to each variable. Due to the non-Gaussian nature of the response variable OA the GAM models are fitted with a log link function and a Gamma distribution. Initially all the environmental variables were set as smooth terms with knots equal to 4. The results of the model summary in table 5 and 6 below are in line with the results of Schmidt W&#39;s paper.
@@ -166,101 +166,65 @@ _Table 7. Overview of the combined dataset used for training and evaluation of t
 | --- | --- | --- | --- |
 | 2011-08-09 2018-07-24 | 155 | 2018-07-312018-08-28 | 5 |
 
-![](RackMultipart20200925-4-cd3znr_html_d7ab250d4c306f3e.gif)
-
 As the aim is to develop a short-term forecasting model, the testing/evaluation period includes only 5 data points. This way the model is trying to predict approximately1-10 weeks in advance as every data point is calculated to be on average 2 weeks apart. A 2-week period would likely be the limit for accurate forecasting, which would give shellfish farmers a warning of possible OA threshold breaches (OA levels above 160 μg/L), therefore the first couple of predictions are to be considered with more importance than those further into the future. This would provide adequate amount of time to plan harvests and manage customer supply chains. However, the 2-week difference is an assumption based on the whole dataset, the difference between measurement intervals for the 5 evaluation data points is calculated to be a mean of **1-week** for St Austell Bay. Which is more suited for the short-term forecasting challenge at hand than the averaged 2-week intervals.
 
 Firstly the GAM (GAM1) model with the environmental variables and the seasonal trend is fitted to the data set and compared to a GAM (GAM2) model that is fitted to the time series of OA toxicity, for the same dates (same data set with 160 observations in table 7). Summary results for the most suitable GAMs (GAM1 and GAM2) are outlined in table 8.
 
 _Table 8. Summary of the most suitable GAM models for St Austell Bay. All variables are smoothed terms with knots set to 6 for GAM1 and 40 for the variable Time in GAM2 (to allow for capture of the historical time series). An asterisk (\*) marks variables that contributed significantly (p \&lt; 0.05) to the model._
 
-|
- | **variables** | **R2** | **RMSE** | **AIC** |
+|| **variables** | **R2** | **RMSE** | **AIC** |
 | --- | --- | --- | --- | --- |
 | **GAM1** | Lagged count\*\*\*, day of year\*\*\*, wind direction\*, lag river | 0.53 | 1930 | 1819 |
 | **GAM2** | Time\*\*\* | 0.59 | 593 | 1703 |
 
-T ![](RackMultipart20200925-4-cd3znr_html_486094209beb86eb.png) he above model summaries are from the predictions of the last 5 observations using 155 observations for training. Comparing the time series GAM2 to the GAM1 it looks to be that the model based just on the time series is performing better, with a lower RMSE and AIC measures. However, when looking at the prediction intervals of the models, GAM1 captures the real observations better,
-
+T he above model summaries are from the predictions of the last 5 observations using 155 observations for training. Comparing the time series GAM2 to the GAM1 it looks to be that the model based just on the time series is performing better, with a lower RMSE and AIC measures. However, when looking at the prediction intervals of the models, GAM1 captures the real observations better,
 especially for points further down the timeline, than GAM2. Hence the environmental variables and the structured seasonal cycle (day of year) play an important role in decreasing uncertainty for predictions. Figure 4 and 5 illustrates the difference in the prediction intervals of both models. GAM2 prediction intervals start to diverge to infinity down the timeline, whereas for GAM1 all of the observations are captured by the prediction intervals in a clearer manner. The figures also show that both models predict the first 2 observations much better than the subsequent 3 observations.
 
-![](RackMultipart20200925-4-cd3znr_html_7b6976fd713265a6.gif)
+![]![](/img/2020-09-25-short-term-fcst_files/plot-5.JPG)
+![]![](/img/2020-09-25-short-term-fcst_files/plot-6.JPG)
 
-RMSE
+The approach of keeping the two models separate instead of adding the time variable to GAM1 was that when doing so, the overall model became overconfident. This yielded predictions with a higher RMSE score than when the two models are kept separate.
 
-The approach of keeping the two models separate instead of adding the time variable to GAM1 was that when doing so, the overall model became overconfident. This yielded predictions with a higher RMSE score than when the two models are kept separate. Another reason for keeping GAM2 with just the time variable, was that it can be then be tested on other coastal sites as it takes into account only the historical OA toxicity levels. Since every site may be influenced differently by the environmental variables (if there is a river, or if the site is shielded by cliffs etc.) it would be good to have a general model that can work for all sites.
+ **Rolling model retrain**
 
-![](RackMultipart20200925-4-cd3znr_html_905b828f9de24d50.gif) **Rolling model retrain**
+It is also important to look at how the models predict across the time series, and not just for the last 5 observations of the data set. When both models undergo a retrain period, the overall trend in RMSE decreases as more observations are added to the training set. The way this was done, is by, first starting with 30 observations (50 for GAM2) and predicting the next 5 observations, subsequently adding the next observation to the training set, and again predicting the next 5, until all the data is used for training.
 
-![](RackMultipart20200925-4-cd3znr_html_663d2f89b83c3244.gif)I ![](RackMultipart20200925-4-cd3znr_html_486094209beb86eb.png) t is also important to look at how the models predict across the time series, and not just for the last 5 observations of the data set. When both models undergo a retrain period, the overall trend in RMSE decreases as more observations are added to the training set. The way this was done, is by, first starting with 30 observations (50 for GAM2) and predicting the next 5 observations, subsequently adding the next observation to the training set, and again predicting the next 5, until all the data is used for training. Figure 6 shows the plots of the RMSE score on the y-axis, and the number of observations on the x-axis. With more data the overall trend for GAM1 decreases just as expected. However, there are some peaks, indicating weaknesses in the model during specific time periods. These weaknesses will be briefly discussed later in the report.
-
-From figure 6 it is observed that GAM1 model is more stable with its predictions, as the RMSE score does not go above 2000 after 60 observations are present in the model. GAM2 looks to be less steady, with massive spikes in RMSE throughout the rolling retrain, indicating the presence of predictions that massively differ from the original observations. This could be due to GAM2 being able to predict the first 1-2 observations relatively well, but struggle with predicting observations that are later in the time series (3-5). This is backed up by the prediction intervals of GAM2, diverging widely for observations at later dates. This behavior could also possibly be linked to the inconsistent time intervals between observations; however, this will need further investigation which is out of scope in this project.
-
-GAM2 was fitted to 160 observations out of the full 190 available, this was done to perform a fair comparison between GAM1 and GAM2. Here the results of the model with just the smoothed time variable fitted to the full historic OA toxicity data set are summarised and will be denoted as GAM3. Fitting a GAM based on historical data alone, without the seasonality will allowed the model to capture any anomalies that have occurred in the past, as had happened for St Austell Bay, where the year 2017 did not have a bloom, contrary to the previous years with blooms during warmer months. Table 9 summaries the results for the GAM3 model when predicting the last 5 observations in the available data set.
-
-_Table 9. Summary of the most suitable GAM3 model for St Austell Bay OA toxicity time series. Spanning 2011-2019 with 190 observations. Variable time is a smoothed term with knots set to 40 (to allow capture of historic patterns)._
-
-|
- | **variables** | **R2** | **RMSE** | **AIC** |
-| --- | --- | --- | --- | --- |
-| **GAM3** | Time\*\*\* | 0.62 | 12 | 2083 |
-
-From the above table it is noted that the RMSE score is much smaller than the previous models, however this is due to predicting observations at a different point in the time series (end of 2019). This was not done for the previous two models as the data was only available up to 2018. These results highlight the difference in predictive power of the models (GAM2 and GAM3) when tested on different points in the time series.
-
-In addition to predicting the absolute values of the OA toxicity, it is also useful to predict the threshold breaches, on which the decision of farm closures is based. This approach will address the right skewness of the OA toxicity levels distribution (figure 2 as the extremely high values will no longer skew the predictions. The threshold at which the harvesting locations are closed is 160 μg/L of okadaic acid (OA). In order to see if the model predicted the closure of the shellfish farm (breached threshold), the OA toxicity levels are first converted into 1&#39;s if the level is above 160 and 0 if below the threshold. Adapting this approach to the last 5 predictions for GAM1 GAM2 and GAM3, the results and accuracy scores are outlined in Table 10.
+In addition to predicting the absolute values of the OA toxicity, it is also useful to predict the threshold breaches, on which the decision of farm closures is based. This approach will address the right skewness of the OA toxicity levels distribution (figure 2 as the extremely high values will no longer skew the predictions. The threshold at which the harvesting locations are closed is 160 μg/L of okadaic acid (OA). In order to see if the model predicted the closure of the shellfish farm (breached threshold), the OA toxicity levels are first converted into 1&#39;s if the level is above 160 and 0 if below the threshold. Adapting this approach to the last 5 predictions for GAM1 and GAM2, the results and accuracy scores are outlined in Table 10.
 
 _Table 10. True positives and true negatives for the developed GAM models. Number of observations to be predicted is 5._
 
-|
- | **True positives** | **True negatives** | **Accuracy** |
+|| **True positives** | **True negatives** | **Accuracy** |
 | --- | --- | --- | --- |
 | **GAM1** | 5/5 | 0/0 | 100% |
 | **GAM2** | 5/5 | 0/0 | 100% |
-| **GAM3** | 0/0 | 5/5 | 100% |
 
-The above true positives and true negatives are calculated for the predictions of the last 5 observations and only give insight into how the models are predicting for the time frame at the end of each data set. All three GAM models have shown to do a good job when predicting the threshold limits forecasted 1-10 weeks into the future (1 observation approximately equal to 2.2 weeks). The threshold breach is the base line for the decision making at the harvesting sites, whether to close or keep the farm open. As the number of observations used to predict the threshold is low, the accuracy is not entirely representative of how the model predicts across other time periods (e.g seasonal peaks). From the previous rolling-retrains (starting with 30-50 observations for training and adding 1 observation every re-train), the averaged accuracies are calculated in table 11.
+The above true positives and true negatives are calculated for the predictions of the last 5 observations and only give insight into how the models are predicting for the time frame at the end of each data set. Both GAM models have shown to do a good job when predicting the threshold limits forecasted 1-10 weeks into the future (1 observation approximately equal to 2.2 weeks). The threshold breach is the base line for the decision making at the harvesting sites, whether to close or keep the farm open. As the number of observations used to predict the threshold is low, the accuracy is not entirely representative of how the model predicts across other time periods (e.g seasonal peaks). From the previous rolling-retrains (starting with 30-50 observations for training and adding 1 observation every re-train), the averaged accuracies are calculated in table 11.
 
 _Table 11. Averaged accuracy scores of the GAM models for threshold breaches, based on the rolling re-train._
 
-|
- | **Accuracy** |
+|| **Accuracy** |
 | --- | --- |
 | **GAM1** | 78% |
 | **GAM2** | 75% |
-| **GAM3** | 74% |
 
-![](RackMultipart20200925-4-cd3znr_html_f831a5778005b1e7.gif)Table 11 suggests that the accuracy for any given time period when predicting the next 5 observations is slightly higher for GAM1, the model with lagged cell count and environmental variables, than the time series models GAM2 and GAM3. However, this is only a rough measure of the overall model accuracy. The method for calculating these figures is based on accuracy scores from each re trained model, meaning that each accuracy score is based on models with more data incrementally, and then averaged for the overall score. In addition to this the accuracy of the absolute OA toxicity value is higher for predictions of 1-2 weeks ahead compared to 10 weeks ahead, as seen previously in figures 4 and 5. Therefore, in theory, if these models are to be used, only the next predicted value should be taken into consideration until the model is retrained.
-
-![](RackMultipart20200925-4-cd3znr_html_358c729959985999.gif)As a final step of analysis for St Austell Bay in this project, the predictions from models GAM1 and GAM2 are averaged in order to use all available information for predictions. This was done to utilize both approaches of GAM modelling, one with covariate information and the other with cross-correlation information, and to reduce uncertainty in predictions. Although the two models could have been combined, with a single GAM incorporating environmental covariates and the time series information, this has led to the model becoming over-confident, producing worse predictions than the approach used in the project with two separate GAMs, for which the predications are averaged. This was done by running model GAM1 and GAM2 with the same parameters as in table n, producing predictions for the same dates. The averaged predictions are based on the mean of the results as both models show similar predictions when tested separately. Table 12 summarises the averaged predictions and the RMSE in comparison to the original predictions from both GAM1 and GAM2 models. The averaging is performed on the last 5 observations of the dataset where the data collection intervals where on average 1-week in between.
-
-_Table 12. Predictions and RMSE for 5 last observations for St Austell Bay from GAM1, GAM2 and averaged predictions with observed values for comparison._
-
-|
- | **Predictions** | **RMSE** |
-| --- | --- | --- |
-| **GAM1** | 1148 | 1147 | 1195 | 1060 | 920 | 1930 |
-| **GAM2** | 1188 | 1577 | 2409 | 3050 | 4447 | 593 |
-| **Averaged** | **1175** | **1433** | **2004** | **2387** | **3271** | **821** |
-| **Observed** | 1202 | 1401 | 3513 | 3300 | 3779 |
- |
-
-From table 12 it is seen that GAM2 (time series) model has closer predictions to the observed than GAM1, however as mentioned before, GAM2 model&#39;s prediction intervals are widespread and go off to infinity for predictions that are further in the future, where GAM1 does a better job at capturing the observed values with its prediction intervals (refer to figures 4 and 5). However, in this case it is still sensible to give more weighting to GAM2 for the averaging of predictions due to the lower RMSE. Here the averaged predictions are weighted as 2/3 from GAM2 and 1/3 from GAM1.
+Table 11 suggests that the accuracy for any given time period when predicting the next 5 observations is slightly higher for GAM1, the model with lagged cell count and environmental variables, than the time series model GAM2. However, this is only a rough measure of the overall model accuracy. The method for calculating these figures is based on accuracy scores from each re trained model, meaning that each accuracy score is based on models with more data incrementally, and then averaged for the overall score. In addition to this the accuracy of the absolute OA toxicity value is higher for predictions of 1-2 weeks ahead compared to 10 weeks ahead, as seen previously in figures 4 and 5. Therefore, in theory, if these models are to be used, only the next predicted value should be taken into consideration until the model is retrained.
 
 **Lantivet and Lyme Bay**
 
-**­** In this section, Lantivet Bay and Lyme Bay data will be analysed to see if the generic model approach used for St Austell Bay will yield similar results for these South West Coastal regions. Both Bays have different environmental characteristics to St Austell Bay, and are not shielded from eastern winds by the cliffs. The presence of rivers is also varied for both of these locations. Firstly, GAM1 and GAM2 will be applied to both locations to predict absolute OA values and subsequently the classification of threshold breaches will be predicted.
+![]![](/img/2020-09-25-short-term-fcst_files/plot-8.JPG)
+![]![](/img/2020-09-25-short-term-fcst_files/plot-9.JPG)
 
-![](RackMultipart20200925-4-cd3znr_html_6321e3c737eb6e26.gif) ![](RackMultipart20200925-4-cd3znr_html_ff0382b267d81a58.gif)The histograms in figures 9 and 10 show the distribution of OA toxicity for both Bays. Both distributions are similar to that of St Austell Bay; however, Lyme Bay does not have such extreme values as St Austell and Lantivet Bays, with a maximum OA toxicity level of 800 compared to 4000 at Lantivet Bay and 7000 at St Austell Bay. Lyme Bay also has substantially less measurements that cross the threshold level of 160 mg/L, with overall less varied measurements.
+In this section, Lantivet Bay and Lyme Bay data will be analysed to see if the generic model approach used for St Austell Bay will yield similar results for these South West Coastal regions. Both Bays have different environmental characteristics to St Austell Bay, and are not shielded from eastern winds by the cliffs. The presence of rivers is also varied for both of these locations. Firstly, GAM1 and GAM2 will be applied to both locations to predict absolute OA values and subsequently the classification of threshold breaches will be predicted.
 
-![](RackMultipart20200925-4-cd3znr_html_82f7d63d8e2506dd.gif) ![](RackMultipart20200925-4-cd3znr_html_fafb24730ad2f6c2.gif)_Figure 10. Histogram of OA toxicity measurements for Lyme Bay_
+The histograms in figures 9 and 10 show the distribution of OA toxicity for both Bays. Both distributions are similar to that of St Austell Bay; however, Lyme Bay does not have such extreme values as St Austell and Lantivet Bays, with a maximum OA toxicity level of 800 compared to 4000 at Lantivet Bay and 7000 at St Austell Bay. Lyme Bay also has substantially less measurements that cross the threshold level of 160 mg/L, with overall less varied measurements.
 
-_Figure 11. Histogram of OA toxicity measurements for Lantivet Bay_
+![](/img/2020-09-25-short-term-fcst_files/plot-10.JPG)
+![](/img/2020-09-25-short-term-fcst_files/plot-11.JPG)
 
 The following figures 12 and 13 show the time series of the OA toxicity at each bay site, with the corresponding concentration levels. These figures show similar patterns to St Austell Bays time series, with the presence of a seasonal cycle with high toxicity in warmer months. However, the relationship between HAB cell count and toxicity levels for both bays differ from that of St Austell, in a way that indicates less lagged correlation, but still a strong relationship between the two.
 
-_Figure 12. OA toxicity levels (red) and concentration counts (black) for the period of 2015-2019 at Lyme Bay_
-
-_Figure 13. OA toxicity levels (red) and concentration counts (black) for the period of 2011-2019 at Lantivet Bay_
+![](/img/2020-09-25-short-term-fcst_files/plot-12.JPG)
+![](/img/2020-09-25-short-term-fcst_files/plot-13.JPG)
 
 For Lyme Bay it looks as though the HAB cell count rises first, and after a period of time the OA toxicity starts rising. Lantivet Bay follows a pattern more similar to Lyme Bay than to St Austell Bay, with HAB cell count rising before OA toxicity, as opposed to both measures rising together as seen for St Austell in figure 1. Table 13 includes the cross-correlations for these two measures at Lyme bay and Lantivet bay.
 
@@ -298,16 +262,14 @@ Although it is ideal to compare the bays when fitting the model to the same vari
 
 _Table 16. Summary of the most suitable GAM models for_ _ **Lyme** _ _Bay. All variables are smoothed terms with knots set to 6 for GAM1 and 45 for the variable Time in GAM2 (to allow for capturing the historical time series)._
 
-|
- | **variables** | **R2** | **RMSE** | **AIC** |
+|| **variables** | **R2** | **RMSE** | **AIC** |
 | --- | --- | --- | --- | --- |
 | **GAM1** | Lagged count\*\*\*, Day of year\*\*\* | 0.54 | 39 | 835 |
 | **GAM2** | Time\*\*\* | 0.75 | 6 | 786 |
 
 _Table 17. Summary of the most suitable GAM models for_ _ **Lantivet** _ _Bay. All variables are smoothed terms with knots set to 6 for GAM1 and 45 for the variable Time in GAM2 (to allow for capturing the historical time series)._
 
-|
- | **Variables** | **R2** | **RMSE** | **AIC** |
+|| **Variables** | **R2** | **RMSE** | **AIC** |
 | --- | --- | --- | --- | --- |
 | **GAM1** | Lagged count\*\*\*, Day of year\*\*\* | 0.56 | 297 | 1273 |
 | **GAM2** | Time\*\*\* | 0.88 | 28 | 1174 |
@@ -323,15 +285,10 @@ _Table 18. True positives and true negatives for the developed GAM models for Ly
 | **GAM1 – Lantivet** | 0/0 | 2/5 | 40% |
 | **GAM2 – Lantivet** | 0/0 | 5/5 | 100% |
 
-![](RackMultipart20200925-4-cd3znr_html_43f9e591a85bf66e.gif)I ![](RackMultipart20200925-4-cd3znr_html_51651d31a877b95a.png) ![](RackMultipart20200925-4-cd3znr_html_51651d31a877b95a.png) n the case of Lantivet Bay, the RMSE score for the predictions of absolute OA measures are smaller than that of St Austell Bays model, however the accuracy for classification of threshold breaches of GAM1 model is quite low, 40%. These metrics however must be taken with caution because the last few observations that were being tested were all very low values (3-74 μg/L ) shown in figure 15, for which the previous values in the training data set where comparatively higher. Since GAM1 is based on a seasonal cycle trend, it could in some cases skew the predictions for warmer months, which could be a possible explanation for the poor predictions at Lantivet bay. Figure 15 shows high predictions for month of August – September. This can be considered a sensitive area where the model will have difficulty correctly classifying the predictions, and would need to be cross checked with the predictions of the absolute OA values to see by how much they diverge from the threshold, and hence a decision would need to be made based on both pieces of information.
+In the case of Lantivet Bay, the RMSE score for the predictions of absolute OA measures are smaller than that of St Austell Bays model, however the accuracy for classification of threshold breaches of GAM1 model is quite low, 40%. These metrics however must be taken with caution because the last few observations that were being tested were all very low values (3-74 μg/L ) shown in figure 15, for which the previous values in the training data set where comparatively higher. Since GAM1 is based on a seasonal cycle trend, it could in some cases skew the predictions for warmer months, which could be a possible explanation for the poor predictions at Lantivet bay. Figure 15 shows high predictions for month of August – September. This can be considered a sensitive area where the model will have difficulty correctly classifying the predictions, and would need to be cross checked with the predictions of the absolute OA values to see by how much they diverge from the threshold, and hence a decision would need to be made based on both pieces of information.
 
-![](RackMultipart20200925-4-cd3znr_html_ec268460f3d6a714.gif) ![](RackMultipart20200925-4-cd3znr_html_51651d31a877b95a.png) ![](RackMultipart20200925-4-cd3znr_html_51651d31a877b95a.png) ![](RackMultipart20200925-4-cd3znr_html_c3e5b4754b7e4c5b.gif)
-
-_Figure 15. Lantivet Bay predictions from GAM1 and GAM2 models for the last 5 observations in the dataset_
-
-![](RackMultipart20200925-4-cd3znr_html_c3e5b4754b7e4c5b.gif)
-
-_Figure 14. Lyme Bay predictions from GAM1 and GAM2 models for the last 5 observations in the dataset_
+![](/img/2020-09-25-short-term-fcst_files/plot-14.JPG)
+![](/img/2020-09-25-short-term-fcst_files/plot-15.JPG)
 
 GAM2 for Lantivet Bay however predicted the absolute values and threshold breach classifications much better in comparison to GAM1.
 
