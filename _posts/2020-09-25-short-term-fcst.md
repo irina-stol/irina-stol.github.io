@@ -330,7 +330,7 @@ In conclusion the modeling approach has shown to produce feasible results that c
 
 3. Lucas JS, Southgate PC (2012) Aquaculture: farming aquatic animals and plants. Wiley-Blackwell, West Sussex
 
-4. Marine Environments | Harmful Algal Blooms | CDC [Internet]. Cdc.gov. 2020 [Accessed 31 July 2020]. Available from: [https://www.cdc.gov/habs/illness-symptoms-marine.html](https://www.cdc.gov/habs/illness-symptoms-marine.html)
+4. Marine Environments, Harmful Algal Blooms, CDC [Internet]. Cdc.gov. 2020 [Accessed 31 July 2020]. Available from: [https://www.cdc.gov/habs/illness-symptoms-marine.html](https://www.cdc.gov/habs/illness-symptoms-marine.html)
 
 5. Public Datastes [Internet]. ECMWF. 2020. [Accessed 31 July 2020]. Available from: [https://apps.ecmwf.int/datasets/](https://apps.ecmwf.int/datasets/)
 
