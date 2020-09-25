@@ -10,7 +10,7 @@ South West England serves as a rich base for multiple harvesting sites of shellf
 
 KEY WORDS: Time Series Modelling · Short-Term Forecasting · Shellfish · Harmful Algae Blooms (HABs) · Okadaic acid · General Additive Model (GAM)
 
-Supporting R code for this report can be found [here](https://github.com/irina-stol/projects/blob/master/short-term-fcst.R)
+Supporting R code for this report can be found [here](https://github.com/irina-stol/projects/blob/master/short-term-fcst.R).
 
 **INTRODUCTION**
 
