@@ -1,6 +1,10 @@
-# **Short term forecasting of harmful algal blooms (HABs) in South West England aquaculture sites**
-
-**ABSTRACT**
+---
+layout: post
+title: "Short-term forecasting of harmful algal blooms (HABs) with Generalized Additive Models (GAMs)"
+date: 2020-09-24
+categories: rblogging
+tags: R GAM forecasting time-series 
+---
 
 South West England serves as a rich base for multiple harvesting sites of shellfish; however, these harvests can be compromised due to environmental conditions. The main environmental threat is the microbiological contamination of shellfish with biotoxins, commonly known as harmful algae blooms (HABs). Such conditions can lead to temporary closures of shellfish farms, financial loss for the marine aquaculture markets and decreased public trust in shellfish produce. This report presents a method for short-term forecasting of okadaic acid (OA) levels (a type of HAB) in shellfish and was evaluated on three distinct harvesting locations.Through analysis of the HAB toxicity data, GAM forecasting models were developed, for three distinct locations in South West England (St Austell Bay, Lyme Bay and Lantivet Bay). The period for the short-term predictions were of 1-10 weeks (n=5) into the future and were averaged from a time series GAM model and a GAM model based on environmental predictors. All GAM model approaches were trained and evaluated for their performance and the best GAM models were selected based on the lowest RMSE (root mean square error), and prediction intervals that best capture the original observations.This approach yielded similar results across all three bays with different time series durations (n=155, n=115, and n=84). The averaged accuracy of predictions for a 1-10-week forecast were 74-78% when used to predict the closure of the shellfish farm for St Austell Bay and 76-84% for Lyme and Lantivet Bays, respectively. Non averaged classification predictions of shellfish farm closures yielded 0% false positives and 0% false negatives when evaluated on the last 5 observations of each data set, with the exception of Lantivet Bay. Such forecasts are useful in shellfish farm management, giving insights as to when the harvests ought to be temporarily stopped, and when they can resume again, preserving a steady economic flow.
 
