@@ -180,8 +180,8 @@ _Table 8. Summary of the most suitable GAM models for St Austell Bay. All variab
 T he above model summaries are from the predictions of the last 5 observations using 155 observations for training. Comparing the time series GAM2 to the GAM1 it looks to be that the model based just on the time series is performing better, with a lower RMSE and AIC measures. However, when looking at the prediction intervals of the models, GAM1 captures the real observations better,
 especially for points further down the timeline, than GAM2. Hence the environmental variables and the structured seasonal cycle (day of year) play an important role in decreasing uncertainty for predictions. Figure 4 and 5 illustrates the difference in the prediction intervals of both models. GAM2 prediction intervals start to diverge to infinity down the timeline, whereas for GAM1 all of the observations are captured by the prediction intervals in a clearer manner. The figures also show that both models predict the first 2 observations much better than the subsequent 3 observations.
 
-![]![](/img/2020-09-25-short-term-fcst_files/plot-5.JPG)
-![]![](/img/2020-09-25-short-term-fcst_files/plot-6.JPG)
+![](/img/2020-09-25-short-term-fcst_files/plot-5.JPG)
+![](/img/2020-09-25-short-term-fcst_files/plot-6.JPG)
 
 The approach of keeping the two models separate instead of adding the time variable to GAM1 was that when doing so, the overall model became overconfident. This yielded predictions with a higher RMSE score than when the two models are kept separate.
 
@@ -211,8 +211,8 @@ Table 11 suggests that the accuracy for any given time period when predicting th
 
 **Lantivet and Lyme Bay**
 
-![]![](/img/2020-09-25-short-term-fcst_files/plot-8.JPG)
-![]![](/img/2020-09-25-short-term-fcst_files/plot-9.JPG)
+![](/img/2020-09-25-short-term-fcst_files/plot-8.JPG)
+![](/img/2020-09-25-short-term-fcst_files/plot-9.JPG)
 
 In this section, Lantivet Bay and Lyme Bay data will be analysed to see if the generic model approach used for St Austell Bay will yield similar results for these South West Coastal regions. Both Bays have different environmental characteristics to St Austell Bay, and are not shielded from eastern winds by the cliffs. The presence of rivers is also varied for both of these locations. Firstly, GAM1 and GAM2 will be applied to both locations to predict absolute OA values and subsequently the classification of threshold breaches will be predicted.
 
@@ -324,27 +324,26 @@ In conclusion the modeling approach has shown to produce feasible results that c
 
 1. Council B. Aquaculture - BBSRC [Internet]. Bbsrc.ukri.org. 2020 [Accessed 8 September 2020]. Available from: [https://bbsrc.ukri.org/research/food-security/aquaculture/](https://bbsrc.ukri.org/research/food-security/aquaculture/)
 
-1. Biotoxin and phytoplankton monitoring [Internet]. Food Standards Agency. 2020 [Accessed 31 July 2020]. Available from: [https://www.food.gov.uk/business-guidance/biotoxin-and-phytoplankton-monitoring](https://www.food.gov.uk/business-guidance/biotoxin-and-phytoplankton-monitoring)
+2. Biotoxin and phytoplankton monitoring [Internet]. Food Standards Agency. 2020 [Accessed 31 July 2020]. Available from: [https://www.food.gov.uk/business-guidance/biotoxin-and-phytoplankton-monitoring](https://www.food.gov.uk/business-guidance/biotoxin-and-phytoplankton-monitoring)
 
-1. Lucas JS, Southgate PC (2012) Aquaculture: farming aquatic animals and plants. Wiley-Blackwell, West Sussex
+3. Lucas JS, Southgate PC (2012) Aquaculture: farming aquatic animals and plants. Wiley-Blackwell, West Sussex
 
-1. Marine Environments | Harmful Algal Blooms | CDC [Internet]. Cdc.gov. 2020 [Accessed 31 July 2020]. Available from: [https://www.cdc.gov/habs/illness-symptoms-marine.html](https://www.cdc.gov/habs/illness-symptoms-marine.html)
+4. Marine Environments | Harmful Algal Blooms | CDC [Internet]. Cdc.gov. 2020 [Accessed 31 July 2020]. Available from: [https://www.cdc.gov/habs/illness-symptoms-marine.html](https://www.cdc.gov/habs/illness-symptoms-marine.html)
 
-1. Public Datastes [Internet]. ECMWF. 2020. [Accessed 31 July 2020]. Available from: [https://apps.ecmwf.int/datasets/](https://apps.ecmwf.int/datasets/)
+5. Public Datastes [Internet]. ECMWF. 2020. [Accessed 31 July 2020]. Available from: [https://apps.ecmwf.int/datasets/](https://apps.ecmwf.int/datasets/)
 
-1. UK Enviroment Agency rain and river data, provided by the College of Life and Environmental Sciences of University of Exeter
+6. UK Enviroment Agency rain and river data, provided by the College of Life and Environmental Sciences of University of Exeter
 
-1. ERSEM - Plymouth Marine Laboratory [Internet]. Pml.ac.uk. 2020 [Accessed 31 July 2020]. Available from: [https://www.pml.ac.uk/Modelling\_at\_PML/Models/ERSEM](https://www.pml.ac.uk/Modelling_at_PML/Models/ERSEM)
+7. ERSEM - Plymouth Marine Laboratory [Internet]. Pml.ac.uk. 2020 [Accessed 31 July 2020]. Available from: [https://www.pml.ac.uk/Modelling\_at\_PML/Models/ERSEM](https://www.pml.ac.uk/Modelling_at_PML/Models/ERSEM)
 
-1. Chaffin J, Linking Models and Field Experiments to Forecast Algal Bloom Toxicity in Lake Erie - NCCOS Coastal Science Website [Internet]. NCCOS Coastal Science Website. 2020 [Accessed 1 August 2020]. Available from: [https://coastalscience.noaa.gov/project/linking-models-field-experiments-forecast-algal-bloom-toxicity-lake-erie/](https://coastalscience.noaa.gov/project/linking-models-field-experiments-forecast-algal-bloom-toxicity-lake-erie/)
+8. Chaffin J, Linking Models and Field Experiments to Forecast Algal Bloom Toxicity in Lake Erie - NCCOS Coastal Science Website [Internet]. NCCOS Coastal Science Website. 2020 [Accessed 1 August 2020]. Available from: [https://coastalscience.noaa.gov/project/linking-models-field-experiments-forecast-algal-bloom-toxicity-lake-erie/](https://coastalscience.noaa.gov/project/linking-models-field-experiments-forecast-algal-bloom-toxicity-lake-erie/)
 
-1. 1. Janssen A, Janse J, Beusen A, Chang M, Harrison J, Huttunen I et al. _How to model algal blooms in any lake on earth_. Current Opinion in Environmental Sustainability. 2019;36:1-10.
+9. 1. Janssen A, Janse J, Beusen A, Chang M, Harrison J, Huttunen I et al. _How to model algal blooms in any lake on earth_. Current Opinion in Environmental Sustainability. 2019;36:1-10.
 
-1. Schmidt W, Evers-King H, Campos C, Jones D, Miller P, Davidson K et al. _A generic approach for the development of short-term predictions of Escherichia coli and biotoxins in shellfish._ Aquaculture Environment Interactions. 2018;10:173-185.
+10. Schmidt W, Evers-King H, Campos C, Jones D, Miller P, Davidson K et al. _A generic approach for the development of short-term predictions of Escherichia coli and biotoxins in shellfish._ Aquaculture Environment Interactions. 2018;10:173-185.
 
-1. Campos, C.J.A., Kershaw, S.R. &amp; Lee, R.J. _Environmental Influences on Faecal Indicator Organisms in Coastal Waters and Their Accumulation in Bivalve Shellfish_. Estuaries and Coasts **36,** 834–853 (2013). [https://doi.org/10.1007/s12237-013-9599-y](https://doi.org/10.1007/s12237-013-9599-y)
+11. Campos, C.J.A., Kershaw, S.R. &amp; Lee, R.J. _Environmental Influences on Faecal Indicator Organisms in Coastal Waters and Their Accumulation in Bivalve Shellfish_. Estuaries and Coasts **36,** 834–853 (2013). [https://doi.org/10.1007/s12237-013-9599-y](https://doi.org/10.1007/s12237-013-9599-y)
 
-1. Sherwin T, Jonas P. The impact of ambient stratification on marine outfall studies in British waters. Marine Pollution Bulletin. 1994;28(9):527-533.
+12. Sherwin T, Jonas P. The impact of ambient stratification on marine outfall studies in British waters. Marine Pollution Bulletin. 1994;28(9):527-533.
 
-1. Brown A, Lilley M, Shutler J, Lowe C, Artioli Y, Torres R et al. _Assessing risks and mitigating impacts of harmful algal blooms on mariculture and marine fisheries_. Reviews in Aquaculture. 2019;.
 
