@@ -12,11 +12,11 @@ KEY WORDS: Time Series Modelling · Short-Term Forecasting · Shellfish · Harmf
 
 Farming of finish, shellfish and seaweed has been growing substantially over the last four decades and is expected to grow further due to the decline of wild fish reserves. In the UK marine aquaculture has generated seafood sales worth over £600 million per year [1]. A major region for expansion of shellfish farms in UK is South West England, with its vast stretches of coastlines which are rich in planktonic algae that shellfish feed on. However, harvests from shellfish farms can be compromised due to naturally occurring marine phytoplankton that produce biotoxins, more commonly known as Harmful Algae Blooms (HABs).
 
-&quot;_Marine biotoxins are poisonous substances which can accumulate in the tissues of live bivalve molluscs. This can be as a result of feeding on biotoxin producing phytoplankton_.&quot;2
+&quot;_Marine biotoxins are poisonous substances which can accumulate in the tissues of live bivalve molluscs. This can be as a result of feeding on biotoxin producing phytoplankton_.&quot;[2]
 
-This can lead to temporary closures of shellfish farms resulting in shortages of supply and financial loss for the aquaculture markets. Additionally, closures due to contaminated waters have shown to affect consumers attitude and trust towards shellfish goods3 since consumption of contaminated shellfish can lead to various serious illnesses such as stomach upsets, amnesia and paralysis4. Consequently, shellfish farms are monitored for biotoxin concentration levels and once a certain threshold is exceeded, the harvesting area is temporarily closed off, until the level of biotoxins drops down to safe levels again.
+This can lead to temporary closures of shellfish farms resulting in shortages of supply and financial loss for the aquaculture markets. Additionally, closures due to contaminated waters have shown to affect consumers attitude and trust towards shellfish goods [3] since consumption of contaminated shellfish can lead to various serious illnesses such as stomach upsets, amnesia and paralysis4. Consequently, shellfish farms are monitored for biotoxin concentration levels and once a certain threshold is exceeded, the harvesting area is temporarily closed off, until the level of biotoxins drops down to safe levels again.
 
-In South West England monitoring of phytoplankton is done by the &#39;Food Standards Agency&#39;2. Water samples are collected at numerous shellfish harvesting sites and analysed for various species of phytoplankton, of which one of them is called &#39;Dinophysis&#39;. This is one of the important phytoplankton which produces the biotoxin &#39;okadaic acid&#39; (OA). If the concentration of OA is greater than or equal to 100 cells/litre of Dinophysis then the site is at the alert level and necessary precautions must be taken if harvesting from these areas. The OA toxin threshold is 160 micrograms/litre (μg/L) to protect human consumers. This will be the biotoxin the project will concentrate on – Okadaic Acid.
+In South West England monitoring of phytoplankton is done by the &#39;Food Standards Agency&#39;[2]. Water samples are collected at numerous shellfish harvesting sites and analysed for various species of phytoplankton, of which one of them is called &#39;Dinophysis&#39;. This is one of the important phytoplankton which produces the biotoxin &#39;okadaic acid&#39; (OA). If the concentration of OA is greater than or equal to 100 cells/litre of Dinophysis then the site is at the alert level and necessary precautions must be taken if harvesting from these areas. The OA toxin threshold is 160 micrograms/litre (μg/L) to protect human consumers. This will be the biotoxin the project will concentrate on – Okadaic Acid.
 
 There have been previous efforts to study environmental conditions such as rainfall and windspeeds, that correlate to high levels of HAB toxicity, however short-term forecasting models for prediction of HAB toxicity in South West England region have not been widespread. Methods looking into HAB cell concentration and the seasonal components have yet to be extensively used for HAB forecasting. Here the project will identify key drivers for elevated OA toxicity levels and explore the use of HAB cell concentration and in addition investigate the time series of OA toxicity levels. With this information forecasting models were developed with two different approaches that can be used to deliver data driven decisions.
 
@@ -39,7 +39,6 @@ These are obtained from approximately 20 South West aquaculture sites, collected
 
 - Rainfall and river flow from UK Environment Agency [6]
 
-- Nutrient concentrations and plankton community composition form European Regional Seas Ecosystem Model (ERSEM)7
 
 The main framework to be used for modelling the data is the Generalized Additive Model Framework (GAMs), which has been developed in the &#39;mgcv&#39; R package as &#39;gam()&#39;. The principle behind GAMs is similar to regression, but instead of summing the effects of individual predictors, GAMs are a sum of the smooth functions of these predictors. Fitting a GAM is achieved via a smoothing function by splitting every predictor variable into sections (called &#39;knots&#39;), and then fitting a polynomial function to every separate section. GAMs would be an appropriate approach since the data at hand will not have a priori reason for choosing a particular response function (cubic, linear, etc.) and hence GAMs would allow for the data to speak for itself. Hence, GAMs would be a good fit for forecasting and interpolation tasks, as well as exploratory analyses regarding the fundamental nature of the response variable. Furthermore, unlike neural networks, which are data hungry, GAMs are able to provide good insight with relatively small data sets, as well as allow for isolation of individual functions on resulting predictors for further study of their effects.
 
@@ -51,13 +50,11 @@ In addition to developing GAM models with environmental variables, another aim o
 
 As mentioned previously, there has been efforts in studying the impacts of environmental variables linked to elevated HAB toxicity level, however, attempts to model and create forecasting solutions for HAB toxicity are less frequent.
 
-Currently there is an ongoing project by the &quot;_National Centers for Coastal Ocean Science&quot;_ 8 with an aim to forecast algal bloom toxicity in Lake Erie. This is one of the bigger projects which has begun in 2017 and is coming up to its end date at the end of August 2020. The study is centered around examination of historical data, looking at correlations between environmental variables and HAB toxin concentrations, to then use these results in numerical models of &quot;_ecological and physical processes to develop hindcasting, nowcasting and forecasting capabilities&quot;_ _8_. Although the project concentrates on fresh water HAB toxins, and contamination of drinking water supply in Toledo, Ohio, the principles and methods used will be a good guide and comparison with the forecasting models developed in this project, once the information and presentations are released.
+A relevant study &quot;_How to model algal blooms in any lake on earth_&quot; [9] presents the current state of algal bloom projection models, exploring the requirements for an ideal model. The paper outlines the advantages and limitations of currently available models for algae projection in lakes around the world. Of the 12 models, majority are statistical (mostly regression based) as opposed to process-based models. Advantages of statistical approaches is that they are generally simple and can point to casual relationships between covariates and the response variable. However, their drawback is that they do not uncover the underlying biological processes as do process-based models. Most models that are regression based have another drawback, which is that they cannot capture sudden changes (non-linear relationships). For which the approach of a genitalised additive model (GAM) would overcome this hurdle, allowing the explanatory variable to be a smooth function. The study concludes that the main advantages of statistical approaches is their ease of modelling and that little input data is required, however caution should be taken as these models are based on past conditions, which may not be the same in the future. Although process-based models include a theoretical understanding of the ecological processes, they are much more complex and require calibration with empirical data.
 
-Another relevant study &quot;_How to model algal blooms in any lake on earth_&quot; 9 presents the current state of algal bloom projection models, exploring the requirements for an ideal model. The approaches used for projecting algae in lakes could also be adapted for modelling HABs in coastal settings. The paper outlines the advantages and limitations of currently available models for algae projection in lakes around the world. Of the 12 models, majority are statistical (mostly regression based) as opposed to process-based models. Advantages of statistical approaches is that they are generally simple and can point to casual relationships between covariates and the response variable. However, their drawback is that they do not uncover the underlying biological processes as do process-based models. Most models that are regression based have another drawback, which is that they cannot capture sudden changes (non-linear relationships). For which the approach of a genitalised additive model (GAM) would overcome this hurdle, allowing the explanatory variable to be a smooth function. The study concludes that the main advantages of statistical approaches is their ease of modelling and that little input data is required, however caution should be taken as these models are based on past conditions, which may not be the same in the future. Although process-based models include a theoretical understanding of the ecological processes, they are much more complex and require calibration with empirical data.
+This project will build upon existing work that is published in the paper named – &quot;_A generic approach for the development of short-term predictions of Escherichia coli and biotoxins in shellfish&quot;_ _[10] This study presents methods for forecasting short-term changes in shellfish concentrations of Escherichia coli and biotoxin- okadaic acid (OA). However, for the purpose of this project only the findings for OA will be looked at from the mentioned paper. The forecasting models were developed by first exploring the environmental drivers for OA toxicity, of which significant variables are outlined in Table 1. As summarised in the table, the study concentrates on three modelling approaches, GLM, Averaged GLM, and GAM.
 
-In addition to the above, this project will build upon existing work that is published in the paper named – &quot;_A generic approach for the development of short-term predictions of Escherichia coli and biotoxins in shellfish&quot;_ _10__._ This study presents methods for forecasting short-term changes in shellfish concentrations of Escherichia coli and biotoxin- okadaic acid (OA). However, for the purpose of this project only the findings for OA will be looked at from the mentioned paper. The forecasting models were developed by first exploring the environmental drivers for OA toxicity, of which significant variables are outlined in Table 1. As summarised in the table, the study concentrates on three modelling approaches, GLM, Averaged GLM, and GAM.
-
-__Table 1.Explanatory variables identified for modelled biotoxin concentrations in St Austell Bay. An asterisk (\*) marks variable that contributed significantly (p \&lt; 0.05) to the model. GLM: generalized linear model; GAM: generalized additive model, SST: sea surface temperature. Source [10]_
+_Table 1.Explanatory variables identified for modelled biotoxin concentrations in St Austell Bay. An asterisk (\*) marks variable that contributed significantly (p \&lt; 0.05) to the model. GLM: generalized linear model; GAM: generalized additive model, SST: sea surface temperature. Source [10]_
 
 | **Model** | **Explanatory variables for biotoxin (OA)** |
 | --- | --- |
@@ -65,52 +62,13 @@ __Table 1.Explanatory variables identified for modelled biotoxin concentrations 
 | **Averaged GLM** | SST\*, solar radiation\*, wind speed, lag rainfall and wind direction |
 | **GAM** | SST\*, solar radiation\*, wind speed\* and as smoothed term: lag rainfall |
 
-The above environmental variables were identified through a metadata analysis10 which suggested that the following variables are important for contracting biotoxin concentrations: rainfall, river flow, solar radiation, sea surface temperature (SST), wind speed and wind direction. Hence this project will utilize available datasets with these key variables. Important variables for St Austell Bay were identified to be sea surface temperature, prevalent in all 3 models of this study (Table 1). This ties into findings of previous studies, suggesting that sea surface temperature can influence the die off of E coli in seawaters11. The developed models were then evaluated for accuracy on the basis of the Root Mean Squared Error (RMSE) and bias measures.
+The above environmental variables were identified through a metadata analysis [10] which suggested that the following variables are important for contracting biotoxin concentrations: rainfall, river flow, solar radiation, sea surface temperature (SST), wind speed and wind direction. Hence this project will utilize available datasets with these key variables. Important variables for St Austell Bay were identified to be sea surface temperature, prevalent in all 3 models of this study (Table 1). This ties into findings of previous studies, suggesting that sea surface temperature can influence the die off of E coli in seawaters [11]. 
 
-_Table 2. Comparison between modelled and observed bio -toxin concentrations for 2016 for St Austell Bay according to statistical measures. All values are presented as μg okadaic acid eq. kg−1 shellfish flesh. RMSE: root mean square error, GLM: generalized linear model; GAM: generalized additive model; \*: best performing model [9]_
+**ANALYSES, AND RESULTS**
 
+The concentration of HAB cell abundance and the OA toxicity are ideally measured every week, however from the data there are some gaps in measurements and hence the dates are more varied than strictly weekly. For St Austell Bay the median times for collected measurements is every 1.14 weeks and the mean is 2.3 weeks. Figure 1 plots the time series of the full available data for HAB cell abundance (concentration levels) and the OA toxicity levels at St Austell Bay.
 
-|| **mean** | **SD** | **RMSE** | **Bias** |
-| --- | --- | --- | --- | --- | --- |
-| **Observations** | 514.7 | 633.5 | NA | NA |
-| **GLM\*** | 227.6 | 159.5 | 596.1 | -287.1 |
-| **Averaged GLM** | 404.1 | 409.7 | 582.3 | -110.6 |
-| **GAM** | 443.7 | 507.2 | 671.6 | -71.01 |
-
-
-| **mean** | **SD** | **RMSE** | **Bias** | 
-| --- | --- | --- | --- | 
-| **Observations** | 514.7 | 633.5 | NA | NA |
-
-From table 2 it is evident that although GLM and averaged GLM have lower RMSE measures, the GAM however has the smallest bias. These results were obtained by training the models on 54 observation and evaluating 24 observations. Although this project will build on the above modelling approaches, the number of evaluation observations will be 5 as opposed to 24 where one on the five observations is on average 2 weeks apart. This is done so that the forecast predictions are only a few weeks (1-10) into the future and not into a whole year in advance.
-
-**DESCRIPTION OF DATA, ANALYSES, AND RESULTS**
-
-The brief outline of the methodology of the project is as follows:
-
-- Initial explanatory data analysis of the available data sets.
-
-- Replication of results from previous study10.
-
-- Build a robust GAM model with not only the environmental variables but also adding in the HAB cell counts and their respective lags. In addition to this, incorporate a seasonal cycle into the model.
-
-- Develop a GAM model based only on the time series of OA toxicity, to test out a different modeling approach and utilise all available information.
-
-- Combine the two models by averaging the prediction results through a weighted method.
-
-- Evaluate models based on RMSE and AIC and then evaluate models&#39; accuracies and check for false positives and false negatives.
-
-- Perform the above methodology on additional coastal sites around South West England and evaluate how well this generic approach performs for these distinct locations.
-
-The data for the project has been briefly outlined in the first section of the report. Here it will be described further.
-
-Main data sets used are the:
-
-- HAB cell abundance per litre of seawater denoted as &#39; **count&#39;**
-
-- HAB toxicity concentration of okadaic acid per kg of shellfish denoted as &#39; **OA&#39;** _._
-
-![](RackMultipart20200925-4-cd3znr_html_e355ebef75a97756.gif)This data is collected for 80 different costal bay locations across the UK, and available publicly by the UK Food Standards Agency2. The concentration of HAB cell abundance and the OA toxicity are ideally measured every week, however from the data there are some gaps in measurements and hence the dates are more varied than strictly weekly. For St Austell Bay the median times for collected measurements is every 1.14 weeks and the mean is 2.3 weeks **.** Figure 1 plots the time series of the full available data for HAB cell abundance (concentration levels) and the OA toxicity levels at St Austell Bay.
+![](plot-1.jpg)
 
 From the initial plot it is observed that the concentration levels do not coincide with the toxicity levels exactly, and this is because the concentration of HABs may be high, but they can be non-toxic in some cases. However, there is a very strong relationship between the two, where the concentration of HAB rises, the toxicity levels rise with it. And once the concentration starts to fall, the toxicity levels continue rising for some time and start to fall down only after some period of time. This indicates that the lagged concentration counts can be used as a variable for OA toxicity predictions. In order to measure this relationship, the cross-correlation (cross-covariance) function was applied between the two variables.
 
@@ -130,8 +88,6 @@ Recalling that the threshold limits for HAB cell abundance is 100 cells per litr
 
 _Table 4. Summary statistics for HAB cell abundance (count) as 100 cells per litre and OA toxicity (OA) as_ mg/L _for St Austell Bay._
 
-![](RackMultipart20200925-4-cd3znr_html_cb4a0dda7316c56b.gif)
-
 | | **Date** | **Count** | **OA** |
 | --- | --- | --- | --- |
 | **Min** | 2011-08-09 | 1.0 | 1.0 |
@@ -141,15 +97,18 @@ _Table 4. Summary statistics for HAB cell abundance (count) as 100 cells per lit
 
 Figure 2 shows the distribution of OA measures, where most values are below 500 mg/L and highlights the extreme high values.
 
+![](plot-2.jpg)
+
 Since the measurements are not taken on a consistent basis, it will be important to account for that when fitting any timer series models (e.g ARIMA) as well as when looking at any lags between HAB count and OA toxicity.
 
-First steps of the project were to examine the findings of Schmidt W.&#39;s paper10, looking specifically at St. Austell and its respective OA toxicity levels. The same data sets were used to try and replicate the results. It is useful to introduce the location for better context, so that the results of the paper and the replicated models make sense.
+First steps of the project were to examine the findings of Schmidt W.&#39;s paper[10], looking specifically at St. Austell and its respective OA toxicity levels. The same data sets were used to try and replicate the results. It is useful to introduce the location for better context, so that the results of the paper and the replicated models make sense.
 
-![](RackMultipart20200925-4-cd3znr_html_cc6b1ecfcec6391e.gif) **St Austell Bay**
+**St Austell Bay**
+
+![](plot-3.jpg)
 
 St Austell Bay is located on the south coast of Cornwall UK, covering an approximate area of 21 km3 and a mean depth of 5 m near the shore to 20 m at the mouth12. The bay includes 2 shellfish farms that harvest blue mussels. Main characteristics of the bay include small tidal current, the river &#39;Par&#39; with other small streams that may influence near shore dynamics and cliffs shielding winds from the east. Taking note of the location&#39;s characteristics, the data sets with the environmental variables can now be looked at in detail. The main environmental variables (for which detailed information can be found in the original paper10) that span up to the end of 2018 to be looked at are the following:
 
-![](RackMultipart20200925-4-cd3znr_html_cf2caa385fb1e31a.gif)
 
 - Rainfall &amp; lagged rainfall (the rainfall on the day prior to OA sampling) – mm d-1
 - River &amp; lagged river flow rate – m s-1
@@ -158,7 +117,13 @@ St Austell Bay is located on the south coast of Cornwall UK, covering an approxi
 - Solar radiation (ssrd) - d-1
 - Sea surface temperature (sst) - degrees Celsius
 
+![](plot-4.jpg)
+
 Initial data plots in figure 3 suggest that some variables have higher predictive power, such as the sea surface temperature and windspeed. And this can be confirmed when fitting a GAM of the following form:
+
+ 〖OA〗_i  ~ Gamma(μ_i,φ)
+log⁡(μ_i )= f_1 (〖rain〗_i ) 〖+f〗_2 (〖river〗_i )+⋯+f_8 (〖lagriver〗_i )
+
 
 Where _f_ is the smoothing function fitted to each variable. Due to the non-Gaussian nature of the response variable OA the GAM models are fitted with a log link function and a Gamma distribution. Initially all the environmental variables were set as smooth terms with knots equal to 4. The results of the model summary in table 5 and 6 below are in line with the results of Schmidt W&#39;s paper.
 
