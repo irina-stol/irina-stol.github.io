@@ -72,7 +72,7 @@ The above environmental variables were identified through a metadata analysis [1
 
 The concentration of HAB cell abundance and the OA toxicity are ideally measured every week, however from the data there are some gaps in measurements and hence the dates are more varied than strictly weekly. For St Austell Bay the median times for collected measurements is every 1.14 weeks and the mean is 2.3 weeks. Figure 1 plots the time series of the full available data for HAB cell abundance (concentration levels) and the OA toxicity levels at St Austell Bay.
 
-![](plot-1.jpg)
+![](/img/2020-09-25-short-term-fcst_files/plot-1.jpg)
 
 From the initial plot it is observed that the concentration levels do not coincide with the toxicity levels exactly, and this is because the concentration of HABs may be high, but they can be non-toxic in some cases. However, there is a very strong relationship between the two, where the concentration of HAB rises, the toxicity levels rise with it. And once the concentration starts to fall, the toxicity levels continue rising for some time and start to fall down only after some period of time. This indicates that the lagged concentration counts can be used as a variable for OA toxicity predictions. In order to measure this relationship, the cross-correlation (cross-covariance) function was applied between the two variables.
 
