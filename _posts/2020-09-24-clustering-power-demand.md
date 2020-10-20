@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Clustering power demand"
-date: 2020-09-24
+date: 2020-09-25
 categories: rblogging
 tags: ggplot2 R clustering 
 ---
